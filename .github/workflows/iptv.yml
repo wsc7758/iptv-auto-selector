@@ -1,40 +1,40 @@
-名称：IPTV自动选择器: IPTV自动选择器: IPTV Auto Selector
+name: IPTV自动选择器: IPTV Auto Selector
 
-在:::
-  工作流程_派发:::
-  时间表:::
-    - cron: "15 22 * * *"cron: "15 22 * * *"cron: "15 22 * * *"cron: "15 22 * * *"
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 22 * * *"
 
-权限：::
-  内容：写: write: write
+permissions:
+  contents: write
 
-工作:::
-  构建:::
-    运行于: ubuntu-latest: ubuntu-latest: ubuntu-latest: ubuntu-latest
-    超时时间（分钟）：45: 45: 45
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
 
-    步骤：:
-      - 名称: 结账名称: 结账name: Checkout
-        用途：actions/checkout@v4: actions/checkout@v4: actions/checkout@v4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: 安装Python
-name: Setup Pythonname: 安装Pythonname: Setup Python
-        用途：actions/setup-python@v5: actions/setup-python@v5: actions/setup-python@v5
-        与：:
-          python-version: "3.11": "3.11": "3.11": "3.11"
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
-      - name: 安装依赖项name: 安装依赖项name: Install dependencies
-        运行：pip install -r requirements.txt: pip install -r requirements.txt: pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
-      - 名称: 运行IPTV选择器name: Run IPTV selector名称: 运行IPTV选择器name: Run IPTV selector
-        环境:::
-          源下载工作进程: "6": "6": "6": "6"
-          STREAM_TEST_WORKERS: "10": "10": "10": "10"
-          每个通道保持："3": "3": "3"
-          预测试最大值每通道: "80": "80": "80": "80"
-          连接超时: "3": "3": "3": "3"
-          读取超时: "6": "6": "6": "6"
-        运行: python main.py: python main.py: python -u main.py: python main.py
+      - name: Run IPTV selector
+        env:
+          SOURCE_DOWNLOAD_WORKERS: "6"
+          STREAM_TEST_WORKERS: "8"
+          KEEP_PER_CHANNEL: "3"
+          PRETEST_MAX_PER_CHANNEL: "80"
+          CONNECT_TIMEOUT: "3"
+          READ_TIMEOUT: "6"
+        # 关键：-u 无缓冲，实时输出print日志
+        run: python -u main.py
 
       - name: Commit outputs
         uses: stefanzweifel/git-auto-commit-action@v5
