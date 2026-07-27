@@ -1,8 +1,0 @@
-runtime/cache/*
-runtime/logs/*
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.env
-*.log
