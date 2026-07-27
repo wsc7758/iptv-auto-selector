@@ -69,6 +69,7 @@ def ensure_dirs() -> None:
 
 def safe_read_text(path: Path) -> str:
     if not path.exists():
+        print(f"[文件不存在] {path.name}")
         return ""
     try:
         return path.read_text(encoding="utf-8")
@@ -84,6 +85,7 @@ def atomic_write_text(path: Path, content: str) -> None:
     tmp = path.with_suffix(path.suffix + ".tmp")
     tmp.write_text(content, encoding="utf-8", newline="\n")
     os.replace(tmp, path)
+    print(f"[写入完成] {path.name}")
 
 
 def atomic_write_json(path: Path, data: dict) -> None:
@@ -100,10 +102,12 @@ def unique_keep_order(items: List[str]) -> List[str]:
 
 def load_lines(path: Path) -> List[str]:
     lines = []
-    for raw in safe_read_text(path).splitlines():
+    raw_text = safe_read_text(path)
+    for raw in raw_text.splitlines():
         line = raw.strip()
         if line and not line.startswith("#"):
             lines.append(line)
+    print(f"[加载文件] {path.name} 有效行数:{len(lines)}")
     return lines
 
 
@@ -143,11 +147,17 @@ def load_blacklist() -> Tuple[set, List[str], List[str]]:
 
 
 def is_black_channel(name: str, exact_channels: set, fuzzy_channels: List[str]) -> bool:
-    return name in exact_channels or any(keyword in name for keyword in fuzzy_channels)
+    res = name in exact_channels or any(keyword in name for keyword in fuzzy_channels)
+    if res:
+        print(f"[黑名单过滤频道] {name}")
+    return res
 
 
 def is_black_url(url: str, url_keywords: List[str]) -> bool:
-    return any(keyword in url for keyword in url_keywords)
+    res = any(keyword in url for keyword in url_keywords)
+    if res:
+        print(f"[黑名单过滤链接] {url}")
+    return res
 
 
 def load_template() -> Tuple[List[str], Dict[str, Tuple[str, str]]]:
@@ -171,11 +181,13 @@ def load_template() -> Tuple[List[str], Dict[str, Tuple[str, str]]]:
 def load_history() -> dict:
     text = safe_read_text(HISTORY_FILE)
     if not text:
+        print("[历史文件为空，新建history记录]")
         return {"version": 1, "urls": {}}
     try:
         data = json.loads(text)
         if "urls" not in data:
             data["urls"] = {}
+        print(f"[加载历史记录] 已有链接历史:{len(data['urls'])}条")
         return data
     except Exception:
         print("【警告】history.json 解析失败，将重新生成历史记录")
@@ -183,6 +195,7 @@ def load_history() -> dict:
 
 
 def download_source(url: str) -> Tuple[str, str]:
+    print(f"[开始下载源] {url}")
     try:
         resp = requests.get(
             url,
@@ -192,7 +205,9 @@ def download_source(url: str) -> Tuple[str, str]:
         )
         resp.encoding = resp.encoding or "utf-8"
         if not (200 <= resp.status_code < 400):
+            print(f"[源下载异常状态码 {resp.status_code}] {url}")
             return url, ""
+        print(f"[源下载成功] {url}")
         return url, resp.text
     except Exception as exc:
         print(f"【源下载失败】{url} | {str(exc)[:100]}")
@@ -357,7 +372,7 @@ def history_score(url: str, history: dict) -> float:
 
 def test_single_url(url: str, url_keywords: List[str], history: dict) -> dict:
     if is_black_url(url, url_keywords):
-        return {
+        res = {
             "url": url,
             "ok": False,
             "blocked": True,
@@ -368,6 +383,8 @@ def test_single_url(url: str, url_keywords: List[str], history: dict) -> dict:
             "reason": "url_blacklist",
             "content_type": "",
         }
+        print(f"[链接黑名单] {url}")
+        return res
 
     parsed_path = urlparse(url).path.lower()
     if ".m3u8" in parsed_path:
@@ -401,7 +418,7 @@ def test_single_url(url: str, url_keywords: List[str], history: dict) -> dict:
         + stable_score * 0.20
     )
 
-    return {
+    result = {
         "url": url,
         "ok": ok,
         "blocked": False,
@@ -412,6 +429,9 @@ def test_single_url(url: str, url_keywords: List[str], history: dict) -> dict:
         "reason": reason,
         "content_type": content_type,
     }
+    status_tag = "✅有效" if ok else "❌失效"
+    print(f"[{status_tag}] {url} | 分数:{score} 延迟:{latency:.2f}s 原因:{reason}")
+    return result
 
 
 def update_history(history: dict, results: List[dict]) -> None:
@@ -433,6 +453,7 @@ def update_history(history: dict, results: List[dict]) -> None:
         item["last_speed_kbps"] = result["speed_kbps"]
         item["last_latency"] = result["latency"]
     history["updated_at"] = ts
+    print(f"[历史记录更新完成，共{len(results)}条链接结果]")
 
 
 def host_of(url: str) -> str:
@@ -443,6 +464,7 @@ def select_best_links(results: List[dict], keep_count: int) -> List[dict]:
     valid = [r for r in results if r["ok"]]
     valid.sort(key=lambda r: (-r["score"], -r["speed_kbps"], r["latency"]))
     if len(valid) <= keep_count:
+        print(f"[择优] 候选数量{len(valid)} ≤ 保留数{keep_count}，全部保留")
         return valid
 
     selected = []
@@ -453,13 +475,14 @@ def select_best_links(results: List[dict], keep_count: int) -> List[dict]:
             selected.append(item)
             used_hosts.add(h)
         if len(selected) >= keep_count:
-            return selected
-
+            break
+    # 不足再补充
     for item in valid:
         if item not in selected:
             selected.append(item)
         if len(selected) >= keep_count:
             break
+    print(f"[择优完成] 总候选{len(valid)} → 选出{len(selected)}条最优线路")
     return selected
 
 
@@ -496,6 +519,7 @@ def collect_channels(
                 if is_black_channel(std_name, exact_black, fuzzy_black):
                     continue
                 if allow_set and std_name not in allow_set:
+                    print(f"[白名单过滤] {std_name} 不在允许列表")
                     continue
                 for url in urls:
                     clean = clean_url(url)
@@ -510,6 +534,7 @@ def collect_channels(
         if PRETEST_MAX_PER_CHANNEL > 0:
             unique_urls = unique_urls[:PRETEST_MAX_PER_CHANNEL]
         channels[name] = unique_urls
+        print(f"[汇总频道] {name} 待测速链接数量:{len(unique_urls)}")
     return channels, url_sources
 
 
@@ -531,11 +556,13 @@ def build_outputs(
     for std_name in output_order:
         selected = select_best_links(channel_results.get(std_name, []), KEEP_PER_CHANNEL)
         if not selected:
+            print(f"[无有效线路，跳过输出] {std_name}")
             continue
         display_name, group_name = template_info.get(std_name, (std_name, "默认分组"))
         tv_groups.setdefault(group_name, [])
         output_channels += 1
         output_links += len(selected)
+        print(f"[输出频道] {display_name} 保留线路{len(selected)}条")
         for item in selected:
             m3u_lines.append(f'#EXTINF:-1 group-title="{group_name}",{display_name}')
             m3u_lines.append(item["url"])
@@ -593,6 +620,7 @@ def main() -> int:
             try:
                 result = future.result()
             except Exception as exc:
+                print(f"[测速任务异常] {url} | {str(exc)}")
                 result = {
                     "url": url,
                     "ok": False,
