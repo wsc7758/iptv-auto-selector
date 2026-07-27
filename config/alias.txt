@@ -1,0 +1,11 @@
+# 频道别名配置：标准名,别名1,别名2,别名3
+# 左侧第一个名称是内部标准名，template_output.txt 和 allow_list.txt 建议使用标准名
+CCTV-1,CCTV1,CCTV-1综合,央视一套,中央一台
+CCTV-2,CCTV2,CCTV-2财经,央视二套
+CCTV-3,CCTV3,CCTV-3综艺,央视三套
+CCTV-4,CCTV4,CCTV-4中文国际,央视四套
+CCTV-5,CCTV5,CCTV-5体育,央视五套
+CCTV-5+,CCTV5+,CCTV-5+体育赛事
+CCTV-6,CCTV6,CCTV-6电影,央视六套
+CCTV-8,CCTV8,CCTV-8电视剧,央视八套
+CCTV-13,CCTV13,CCTV-13新闻,央视新闻
