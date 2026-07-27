@@ -1,0 +1,4 @@
+# 每行一个 IPTV 订阅源地址，支持 m3u / m3u8 / txt
+# 示例：
+# https://example.com/iptv.m3u
+# https://example.com/live.txt
