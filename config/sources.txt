@@ -1,4 +1,24 @@
-# 每行一个 IPTV 订阅源地址，支持 m3u / m3u8 / txt
-# 示例：
-# https://example.com/iptv.m3u
-# https://example.com/live.txt
+https://gh.927223.xyz/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt
+http://1.94.31.214/live/live9/dgtv.txt
+https://d.kstore.dev/download/11344/yunduan.txt
+https://gh-proxy.com/https://raw.githubusercontent.com/maoystv/6/main/TV/live20220813.txt
+https://d.kstore.dev/download/12441/ds9.txt
+https://gh-proxy.com/https://raw.githubusercontent.com/hanhan8127/TVBox/main/live.txt
+https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt
+https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt
+https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u
+https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u
+https://wget.la/https://raw.githubusercontent.com/nianxinmj/nxpz/refs/heads/main/lib/live.txt
+https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt
+https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt
+http://210.245.166.84:1299/live/live1.txt
+https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt
+http://xhztv.top/new.txt
+http://210.245.166.84:1299/live/live.txt
+https://live.zbds.top/tv/iptv4.txt
+https://gh-proxy.com/https://raw.githubusercontent.com/kakaxi-1/IPTV/main/ipv4.txt
+https://develop202.github.io/migu_video/interface.txt
+https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt
+https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u
+https://szyyds.cn/tv/live/x.txt
+https://ghproxy.net/https://raw.githubusercontent.com/ssili126/tv/main/itvlist.txt
