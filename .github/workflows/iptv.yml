@@ -33,7 +33,6 @@ jobs:
           PRETEST_MAX_PER_CHANNEL: "80"
           CONNECT_TIMEOUT: "3"
           READ_TIMEOUT: "6"
-        # 关键：-u 无缓冲，实时输出print日志
         run: python -u main.py
 
       - name: Commit outputs
