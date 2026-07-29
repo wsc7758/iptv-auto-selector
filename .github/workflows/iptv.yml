@@ -1,4 +1,4 @@
-name: IPTV自动选择器: IPTV Auto Selector
+name: IPTV Auto Selector
 
 on:
   workflow_dispatch:
@@ -11,7 +11,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 40
 
     steps:
       - name: Checkout
@@ -30,10 +30,19 @@ jobs:
           SOURCE_DOWNLOAD_WORKERS: "6"
           STREAM_TEST_WORKERS: "8"
           KEEP_PER_CHANNEL: "3"
-          PRETEST_MAX_PER_CHANNEL: "80"
+          PRETEST_MAX_PER_CHANNEL: "50"
+          MAX_TOTAL_TEST_URLS: "2500"
           CONNECT_TIMEOUT: "3"
-          READ_TIMEOUT: "6"
-        run: python -u main.py
+          READ_TIMEOUT: "5"
+          SOURCE_STAGE_MAX_SECONDS: "150"
+          TEST_STAGE_MAX_SECONDS: "1500"
+          SINGLE_URL_MAX_SECONDS: "10"
+          SOURCE_MAX_BYTES: "3145728"
+          DIRECT_READ_BYTES: "262144"
+          SEGMENT_READ_BYTES: "131072"
+          MIN_VALID_BYTES: "8192"
+          M3U8_SEGMENT_TEST_COUNT: "1"
+        run: python main.py
 
       - name: Commit outputs
         uses: stefanzweifel/git-auto-commit-action@v5
