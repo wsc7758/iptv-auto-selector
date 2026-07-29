@@ -1,11 +1,10 @@
-import csv
 import json
 import os
 import re
 import time
 import traceback
 from collections import OrderedDict, defaultdict
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, as_completed, wait
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Tuple
@@ -37,12 +36,18 @@ SOURCE_DOWNLOAD_WORKERS = int(os.getenv("SOURCE_DOWNLOAD_WORKERS", "6"))
 STREAM_TEST_WORKERS = int(os.getenv("STREAM_TEST_WORKERS", "10"))
 KEEP_PER_CHANNEL = int(os.getenv("KEEP_PER_CHANNEL", "3"))
 PRETEST_MAX_PER_CHANNEL = int(os.getenv("PRETEST_MAX_PER_CHANNEL", "80"))
+MAX_TOTAL_TEST_URLS = int(os.getenv("MAX_TOTAL_TEST_URLS", "3000"))
 
 CONNECT_TIMEOUT = float(os.getenv("CONNECT_TIMEOUT", "3"))
 READ_TIMEOUT = float(os.getenv("READ_TIMEOUT", "6"))
+SOURCE_STAGE_MAX_SECONDS = float(os.getenv("SOURCE_STAGE_MAX_SECONDS", "180"))
+TEST_STAGE_MAX_SECONDS = float(os.getenv("TEST_STAGE_MAX_SECONDS", "1800"))
+SINGLE_URL_MAX_SECONDS = float(os.getenv("SINGLE_URL_MAX_SECONDS", "12"))
+SOURCE_MAX_BYTES = int(os.getenv("SOURCE_MAX_BYTES", str(3 * 1024 * 1024)))
 DIRECT_READ_BYTES = int(os.getenv("DIRECT_READ_BYTES", str(512 * 1024)))
 SEGMENT_READ_BYTES = int(os.getenv("SEGMENT_READ_BYTES", str(256 * 1024)))
 MIN_VALID_BYTES = int(os.getenv("MIN_VALID_BYTES", str(16 * 1024)))
+M3U8_SEGMENT_TEST_COUNT = int(os.getenv("M3U8_SEGMENT_TEST_COUNT", "1"))
 
 DEFAULT_HEADERS = {
     "User-Agent": os.getenv(
@@ -69,7 +74,6 @@ def ensure_dirs() -> None:
 
 def safe_read_text(path: Path) -> str:
     if not path.exists():
-        print(f"[文件不存在] {path.name}")
         return ""
     try:
         return path.read_text(encoding="utf-8")
@@ -85,7 +89,6 @@ def atomic_write_text(path: Path, content: str) -> None:
     tmp = path.with_suffix(path.suffix + ".tmp")
     tmp.write_text(content, encoding="utf-8", newline="\n")
     os.replace(tmp, path)
-    print(f"[写入完成] {path.name}")
 
 
 def atomic_write_json(path: Path, data: dict) -> None:
@@ -102,12 +105,10 @@ def unique_keep_order(items: List[str]) -> List[str]:
 
 def load_lines(path: Path) -> List[str]:
     lines = []
-    raw_text = safe_read_text(path)
-    for raw in raw_text.splitlines():
+    for raw in safe_read_text(path).splitlines():
         line = raw.strip()
         if line and not line.startswith("#"):
             lines.append(line)
-    print(f"[加载文件] {path.name} 有效行数:{len(lines)}")
     return lines
 
 
@@ -147,17 +148,11 @@ def load_blacklist() -> Tuple[set, List[str], List[str]]:
 
 
 def is_black_channel(name: str, exact_channels: set, fuzzy_channels: List[str]) -> bool:
-    res = name in exact_channels or any(keyword in name for keyword in fuzzy_channels)
-    if res:
-        print(f"[黑名单过滤频道] {name}")
-    return res
+    return name in exact_channels or any(keyword in name for keyword in fuzzy_channels)
 
 
 def is_black_url(url: str, url_keywords: List[str]) -> bool:
-    res = any(keyword in url for keyword in url_keywords)
-    if res:
-        print(f"[黑名单过滤链接] {url}")
-    return res
+    return any(keyword in url for keyword in url_keywords)
 
 
 def load_template() -> Tuple[List[str], Dict[str, Tuple[str, str]]]:
@@ -181,13 +176,11 @@ def load_template() -> Tuple[List[str], Dict[str, Tuple[str, str]]]:
 def load_history() -> dict:
     text = safe_read_text(HISTORY_FILE)
     if not text:
-        print("[历史文件为空，新建history记录]")
         return {"version": 1, "urls": {}}
     try:
         data = json.loads(text)
         if "urls" not in data:
             data["urls"] = {}
-        print(f"[加载历史记录] 已有链接历史:{len(data['urls'])}条")
         return data
     except Exception:
         print("【警告】history.json 解析失败，将重新生成历史记录")
@@ -195,20 +188,31 @@ def load_history() -> dict:
 
 
 def download_source(url: str) -> Tuple[str, str]:
-    print(f"[开始下载源] {url}")
+    start = time.perf_counter()
     try:
-        resp = requests.get(
+        with requests.get(
             url,
             headers=DEFAULT_HEADERS,
             timeout=(CONNECT_TIMEOUT, READ_TIMEOUT),
             verify=False,
-        )
-        resp.encoding = resp.encoding or "utf-8"
-        if not (200 <= resp.status_code < 400):
-            print(f"[源下载异常状态码 {resp.status_code}] {url}")
-            return url, ""
-        print(f"[源下载成功] {url}")
-        return url, resp.text
+            stream=True,
+        ) as resp:
+            if not (200 <= resp.status_code < 400):
+                return url, ""
+            chunks = []
+            total = 0
+            for chunk in resp.iter_content(chunk_size=64 * 1024):
+                if not chunk:
+                    break
+                chunks.append(chunk)
+                total += len(chunk)
+                if total >= SOURCE_MAX_BYTES:
+                    print(f"【源截断】{url} 超过 {SOURCE_MAX_BYTES // 1024}KB，仅解析前半部分")
+                    break
+                if time.perf_counter() - start >= SINGLE_URL_MAX_SECONDS:
+                    print(f"【源超时截断】{url} 下载超过 {SINGLE_URL_MAX_SECONDS:.0f} 秒，仅解析已下载内容")
+                    break
+            return url, b"".join(chunks).decode(resp.encoding or "utf-8", errors="ignore")
     except Exception as exc:
         print(f"【源下载失败】{url} | {str(exc)[:100]}")
         return url, ""
@@ -249,13 +253,15 @@ def parse_source(content: str) -> Dict[str, List[str]]:
     return parse_txt(content)
 
 
-def read_limited_response(resp: requests.Response, limit_bytes: int) -> int:
+def read_limited_response(resp: requests.Response, limit_bytes: int, start: float, max_seconds: float) -> int:
     total = 0
     for chunk in resp.iter_content(chunk_size=64 * 1024):
         if not chunk:
             break
         total += len(chunk)
         if total >= limit_bytes:
+            break
+        if time.perf_counter() - start >= max_seconds:
             break
     return total
 
@@ -280,6 +286,8 @@ def fetch_text_limited(url: str, limit_bytes: int = 256 * 1024) -> Tuple[bool, s
                 chunks.append(chunk)
                 total += len(chunk)
                 if total >= limit_bytes:
+                    break
+                if time.perf_counter() - start >= SINGLE_URL_MAX_SECONDS:
                     break
             ok = 200 <= resp.status_code < 400 and total > 0
             text = b"".join(chunks).decode(resp.encoding or "utf-8", errors="ignore")
@@ -317,7 +325,7 @@ def test_direct_bytes(url: str, limit_bytes: int) -> Tuple[bool, int, float, str
             stream=True,
         ) as resp:
             content_type = resp.headers.get("Content-Type", "").lower()
-            total = read_limited_response(resp, limit_bytes)
+            total = read_limited_response(resp, limit_bytes, start, SINGLE_URL_MAX_SECONDS)
             status_ok = 200 <= resp.status_code < 400
             html_like = "text/html" in content_type and total < MIN_VALID_BYTES
             ok = status_ok and total >= MIN_VALID_BYTES and not html_like
@@ -347,7 +355,7 @@ def test_m3u8(url: str) -> Tuple[bool, int, float, str, str]:
     tested_bytes = playlist_bytes
     tested_latency = playlist_latency
     segment_success = 0
-    for segment in segments[:2]:
+    for segment in segments[:M3U8_SEGMENT_TEST_COUNT]:
         ok, byte_count, latency, seg_type = test_direct_bytes(segment, SEGMENT_READ_BYTES)
         tested_bytes += byte_count
         tested_latency += latency
@@ -372,7 +380,7 @@ def history_score(url: str, history: dict) -> float:
 
 def test_single_url(url: str, url_keywords: List[str], history: dict) -> dict:
     if is_black_url(url, url_keywords):
-        res = {
+        return {
             "url": url,
             "ok": False,
             "blocked": True,
@@ -383,15 +391,13 @@ def test_single_url(url: str, url_keywords: List[str], history: dict) -> dict:
             "reason": "url_blacklist",
             "content_type": "",
         }
-        print(f"[链接黑名单] {url}")
-        return res
 
     parsed_path = urlparse(url).path.lower()
     if ".m3u8" in parsed_path:
         ok, byte_count, latency, content_type, reason = test_m3u8(url)
     else:
         ok, byte_count, latency, content_type = test_direct_bytes(url, DIRECT_READ_BYTES)
-        if not ok and ("mpegurl" in content_type or byte_count < MIN_VALID_BYTES):
+        if not ok and ("mpegurl" in content_type or "m3u8" in content_type):
             m3u8_ok, m3u8_bytes, m3u8_latency, m3u8_type, m3u8_reason = test_m3u8(url)
             if m3u8_ok:
                 ok, byte_count, latency, content_type, reason = (
@@ -418,7 +424,7 @@ def test_single_url(url: str, url_keywords: List[str], history: dict) -> dict:
         + stable_score * 0.20
     )
 
-    result = {
+    return {
         "url": url,
         "ok": ok,
         "blocked": False,
@@ -429,9 +435,6 @@ def test_single_url(url: str, url_keywords: List[str], history: dict) -> dict:
         "reason": reason,
         "content_type": content_type,
     }
-    status_tag = "✅有效" if ok else "❌失效"
-    print(f"[{status_tag}] {url} | 分数:{score} 延迟:{latency:.2f}s 原因:{reason}")
-    return result
 
 
 def update_history(history: dict, results: List[dict]) -> None:
@@ -453,7 +456,6 @@ def update_history(history: dict, results: List[dict]) -> None:
         item["last_speed_kbps"] = result["speed_kbps"]
         item["last_latency"] = result["latency"]
     history["updated_at"] = ts
-    print(f"[历史记录更新完成，共{len(results)}条链接结果]")
 
 
 def host_of(url: str) -> str:
@@ -464,7 +466,6 @@ def select_best_links(results: List[dict], keep_count: int) -> List[dict]:
     valid = [r for r in results if r["ok"]]
     valid.sort(key=lambda r: (-r["score"], -r["speed_kbps"], r["latency"]))
     if len(valid) <= keep_count:
-        print(f"[择优] 候选数量{len(valid)} ≤ 保留数{keep_count}，全部保留")
         return valid
 
     selected = []
@@ -475,14 +476,13 @@ def select_best_links(results: List[dict], keep_count: int) -> List[dict]:
             selected.append(item)
             used_hosts.add(h)
         if len(selected) >= keep_count:
-            break
-    # 不足再补充
+            return selected
+
     for item in valid:
         if item not in selected:
             selected.append(item)
         if len(selected) >= keep_count:
             break
-    print(f"[择优完成] 总候选{len(valid)} → 选出{len(selected)}条最优线路")
     return selected
 
 
@@ -502,31 +502,51 @@ def collect_channels(
     raw_channels = defaultdict(list)
     url_sources = defaultdict(set)
 
-    with ThreadPoolExecutor(max_workers=SOURCE_DOWNLOAD_WORKERS) as pool:
-        futures = {pool.submit(download_source, src): src for src in sources}
-        for idx, future in enumerate(as_completed(futures), 1):
-            src, text = future.result()
-            if not text:
-                print(f"【源跳过】{src}")
+    pool = ThreadPoolExecutor(max_workers=SOURCE_DOWNLOAD_WORKERS)
+    futures = {pool.submit(download_source, src): src for src in sources}
+    pending = set(futures)
+    deadline = time.monotonic() + SOURCE_STAGE_MAX_SECONDS
+    idx = 0
+    try:
+        while pending and time.monotonic() < deadline:
+            done, pending = wait(pending, timeout=2, return_when=FIRST_COMPLETED)
+            if not done:
+                print(f"【源下载等待】已完成 {idx}/{len(sources)}，剩余 {len(pending)}")
                 continue
-            parsed = parse_source(text)
-            line_count = sum(len(v) for v in parsed.values())
-            print(f"【源解析】{idx}/{len(sources)} 频道 {len(parsed)} 个，线路 {line_count} 条 | {src}")
-            for raw_name, urls in parsed.items():
-                std_name = alias_map.get(raw_name.strip(), raw_name.strip())
-                if not std_name:
+            for future in done:
+                idx += 1
+                try:
+                    src, text = future.result()
+                except Exception as exc:
+                    src = futures.get(future, "unknown")
+                    text = ""
+                    print(f"【源任务异常】{src} | {str(exc)[:100]}")
+                if not text:
+                    print(f"【源跳过】{src}")
                     continue
-                if is_black_channel(std_name, exact_black, fuzzy_black):
-                    continue
-                if allow_set and std_name not in allow_set:
-                    print(f"[白名单过滤] {std_name} 不在允许列表")
-                    continue
-                for url in urls:
-                    clean = clean_url(url)
-                    if not clean.startswith(("http://", "https://")):
+                parsed = parse_source(text)
+                line_count = sum(len(v) for v in parsed.values())
+                print(f"【源解析】{idx}/{len(sources)} 频道 {len(parsed)} 个，线路 {line_count} 条 | {src}")
+                for raw_name, urls in parsed.items():
+                    std_name = alias_map.get(raw_name.strip(), raw_name.strip())
+                    if not std_name:
                         continue
-                    raw_channels[std_name].append(clean)
-                    url_sources[clean].add(src)
+                    if is_black_channel(std_name, exact_black, fuzzy_black):
+                        continue
+                    if allow_set and std_name not in allow_set:
+                        continue
+                    for url in urls:
+                        clean = clean_url(url)
+                        if not clean.startswith(("http://", "https://")):
+                            continue
+                        raw_channels[std_name].append(clean)
+                        url_sources[clean].add(src)
+        if pending:
+            print(f"【源阶段超时】跳过 {len(pending)} 个未完成源，继续处理已下载内容")
+            for future in pending:
+                future.cancel()
+    finally:
+        pool.shutdown(wait=False, cancel_futures=True)
 
     channels = {}
     for name, urls in raw_channels.items():
@@ -534,7 +554,6 @@ def collect_channels(
         if PRETEST_MAX_PER_CHANNEL > 0:
             unique_urls = unique_urls[:PRETEST_MAX_PER_CHANNEL]
         channels[name] = unique_urls
-        print(f"[汇总频道] {name} 待测速链接数量:{len(unique_urls)}")
     return channels, url_sources
 
 
@@ -556,13 +575,11 @@ def build_outputs(
     for std_name in output_order:
         selected = select_best_links(channel_results.get(std_name, []), KEEP_PER_CHANNEL)
         if not selected:
-            print(f"[无有效线路，跳过输出] {std_name}")
             continue
         display_name, group_name = template_info.get(std_name, (std_name, "默认分组"))
         tv_groups.setdefault(group_name, [])
         output_channels += 1
         output_links += len(selected)
-        print(f"[输出频道] {display_name} 保留线路{len(selected)}条")
         for item in selected:
             m3u_lines.append(f'#EXTINF:-1 group-title="{group_name}",{display_name}')
             m3u_lines.append(item["url"])
@@ -609,19 +626,56 @@ def main() -> int:
             url_to_channels[url].append(channel)
             unique_urls.append(url)
     unique_urls = unique_keep_order(unique_urls)
+    original_unique_count = len(unique_urls)
+    if MAX_TOTAL_TEST_URLS > 0 and len(unique_urls) > MAX_TOTAL_TEST_URLS:
+        unique_urls.sort(key=lambda u: history_score(u, history), reverse=True)
+        unique_urls = unique_urls[:MAX_TOTAL_TEST_URLS]
+        print(
+            f"【测速截断】候选链接 {original_unique_count} 条，"
+            f"本次仅测试历史优先的前 {MAX_TOTAL_TEST_URLS} 条"
+        )
 
     print(f"【测速】去重后待测链接 {len(unique_urls)} 条，并发 {STREAM_TEST_WORKERS}")
     url_results = {}
     finished = 0
-    with ThreadPoolExecutor(max_workers=STREAM_TEST_WORKERS) as pool:
-        futures = {pool.submit(test_single_url, url, url_keywords, history): url for url in unique_urls}
-        for future in as_completed(futures):
-            url = futures[future]
-            try:
-                result = future.result()
-            except Exception as exc:
-                print(f"[测速任务异常] {url} | {str(exc)}")
-                result = {
+    timeout_count = 0
+    pool = ThreadPoolExecutor(max_workers=STREAM_TEST_WORKERS)
+    futures = {pool.submit(test_single_url, url, url_keywords, history): url for url in unique_urls}
+    pending = set(futures)
+    deadline = time.monotonic() + TEST_STAGE_MAX_SECONDS
+    try:
+        while pending and time.monotonic() < deadline:
+            done, pending = wait(pending, timeout=5, return_when=FIRST_COMPLETED)
+            if not done:
+                print(f"【测速等待】已完成 {finished}/{len(unique_urls)}，剩余 {len(pending)}")
+                continue
+            for future in done:
+                url = futures[future]
+                try:
+                    result = future.result()
+                except Exception as exc:
+                    result = {
+                        "url": url,
+                        "ok": False,
+                        "blocked": False,
+                        "latency": 0,
+                        "bytes": 0,
+                        "speed_kbps": 0,
+                        "score": 0,
+                        "reason": f"exception:{str(exc)[:80]}",
+                        "content_type": "",
+                    }
+                url_results[url] = result
+                finished += 1
+                if finished % 50 == 0 or finished == len(unique_urls):
+                    print(f"【测速进度】{finished}/{len(unique_urls)}")
+        if pending:
+            timeout_count = len(pending)
+            print(f"【测速阶段超时】跳过 {timeout_count} 条未完成链接，使用已完成结果继续输出")
+            for future in pending:
+                url = futures[future]
+                future.cancel()
+                url_results[url] = {
                     "url": url,
                     "ok": False,
                     "blocked": False,
@@ -629,13 +683,11 @@ def main() -> int:
                     "bytes": 0,
                     "speed_kbps": 0,
                     "score": 0,
-                    "reason": f"exception:{str(exc)[:80]}",
+                    "reason": "stage_timeout",
                     "content_type": "",
                 }
-            url_results[url] = result
-            finished += 1
-            if finished % 50 == 0 or finished == len(unique_urls):
-                print(f"【测速进度】{finished}/{len(unique_urls)}")
+    finally:
+        pool.shutdown(wait=False, cancel_futures=True)
 
     channel_results = defaultdict(list)
     for url, result in url_results.items():
@@ -659,15 +711,23 @@ def main() -> int:
         "source_count": len(sources),
         "channel_count": len(channels),
         "tested_url_count": len(unique_urls),
+        "candidate_url_count": original_unique_count,
+        "stage_timeout_url_count": timeout_count,
         "valid_url_count": ok_count,
         **output_summary,
         "settings": {
             "stream_test_workers": STREAM_TEST_WORKERS,
             "keep_per_channel": KEEP_PER_CHANNEL,
             "pretest_max_per_channel": PRETEST_MAX_PER_CHANNEL,
+            "max_total_test_urls": MAX_TOTAL_TEST_URLS,
+            "source_stage_max_seconds": SOURCE_STAGE_MAX_SECONDS,
+            "test_stage_max_seconds": TEST_STAGE_MAX_SECONDS,
+            "single_url_max_seconds": SINGLE_URL_MAX_SECONDS,
+            "source_max_bytes": SOURCE_MAX_BYTES,
             "direct_read_bytes": DIRECT_READ_BYTES,
             "segment_read_bytes": SEGMENT_READ_BYTES,
             "min_valid_bytes": MIN_VALID_BYTES,
+            "m3u8_segment_test_count": M3U8_SEGMENT_TEST_COUNT,
         },
         "channels": {
             channel: select_best_links(results, KEEP_PER_CHANNEL)
