@@ -29,7 +29,7 @@ jobs:
         env:
           SOURCE_DOWNLOAD_WORKERS: "6"
           STREAM_TEST_WORKERS: "8"
-          KEEP_PER_CHANNEL: "3"
+          KEEP_PER_CHANNEL: "5"
           PRETEST_MAX_PER_CHANNEL: "50"
           MAX_TOTAL_TEST_URLS: "2500"
           CONNECT_TIMEOUT: "3"
