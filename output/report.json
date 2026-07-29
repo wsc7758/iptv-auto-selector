@@ -1,0 +1,5065 @@
+{
+  "generated_at": "2026-07-29T01:43:36+00:00",
+  "duration_seconds": 821.83,
+  "source_count": 24,
+  "channel_count": 18827,
+  "tested_url_count": 2500,
+  "candidate_url_count": 28560,
+  "stage_timeout_url_count": 0,
+  "valid_url_count": 425,
+  "output_channels": 7,
+  "output_links": 21,
+  "keep_per_channel": 3,
+  "settings": {
+    "stream_test_workers": 8,
+    "keep_per_channel": 3,
+    "pretest_max_per_channel": 50,
+    "max_total_test_urls": 2500,
+    "source_stage_max_seconds": 150.0,
+    "test_stage_max_seconds": 1500.0,
+    "single_url_max_seconds": 10.0,
+    "source_max_bytes": 3145728,
+    "direct_read_bytes": 262144,
+    "segment_read_bytes": 131072,
+    "min_valid_bytes": 8192,
+    "m3u8_segment_test_count": 1
+  },
+  "channels": {
+    "CCTV-13": [
+      {
+        "url": "http://221.7.175.154:8445/tsfile/live/1011_1.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.0584,
+        "bytes": 131516,
+        "speed_kbps": 62.4,
+        "score": 62.38,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream;charset=utf-8",
+        "sources": [
+          "https://d.kstore.dev/download/12441/ds9.txt"
+        ]
+      },
+      {
+        "url": "http://59.39.89.130:60901/tsfile/live/0013_1.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.3442,
+        "bytes": 131495,
+        "speed_kbps": 54.78,
+        "score": 61.34,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "https://event.pull.hebtv.com/jishi/cp1.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.3474,
+        "bytes": 131399,
+        "speed_kbps": 54.66,
+        "score": 61.32,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "cctv13hd": [],
+    "CCTV13新闻": [
+      {
+        "url": "http://59.39.89.130:60901/tsfile/live/0013_1.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.3442,
+        "bytes": 131495,
+        "speed_kbps": 54.78,
+        "score": 61.34,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "https://event.pull.hebtv.com/jishi/cp1.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.3474,
+        "bytes": 131399,
+        "speed_kbps": 54.66,
+        "score": 61.32,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://ali-m-l.cztv.com/channels/lantian/channel21/1080p.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.5466,
+        "bytes": 131371,
+        "speed_kbps": 50.38,
+        "score": 60.62,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "CCTV13新聞": [],
+    "CCTV-13HD": [],
+    "CCTV-13新闻高清": [],
+    "CCTV-13æ°é»": [],
+    "CCTV-13é«ç ": [],
+    "CCTV-13山东": [],
+    "CCTV-13åªå": [],
+    "CCTV-13咪咕": [],
+    "CCTV-4K": [],
+    "CCTV-1": [
+      {
+        "url": "http://111.4.59.41:60901/tsfile/live/1001_1.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.5548,
+        "bytes": 131745,
+        "speed_kbps": 82.75,
+        "score": 64.4,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt"
+        ]
+      },
+      {
+        "url": "http://139.227.21.22:9901/tsfile/live/0001_1.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.7177,
+        "bytes": 131501,
+        "speed_kbps": 74.76,
+        "score": 63.72,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt"
+        ]
+      },
+      {
+        "url": "http://221.7.175.154:8445/tsfile/live/1000_1.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.7848,
+        "bytes": 131516,
+        "speed_kbps": 71.96,
+        "score": 63.44,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream;charset=utf-8",
+        "sources": [
+          "https://d.kstore.dev/download/12441/ds9.txt"
+        ]
+      }
+    ],
+    "广西卫视": [
+      {
+        "url": "https://live.264788.xyz/channel/guangxiweishi?streamid=038a343487c52ef4d7c8f202064b4b24&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1344,
+        "bytes": 262144,
+        "speed_kbps": 1905.29,
+        "score": 91.6,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "http://112.30.73.119:9901/tsfile/live/1405_1.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.4479,
+        "bytes": 131757,
+        "speed_kbps": 88.87,
+        "score": 64.88,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream;charset=utf-8",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "https://hlscdn.liangtv.cn/live/de0f97348eb84f62aa6b7d8cf0430770/dd505d87880c478f901f38560ca4d4e6.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.7176,
+        "bytes": 131822,
+        "speed_kbps": 74.95,
+        "score": 63.72,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://d.kstore.dev/download/12441/ds9.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      }
+    ],
+    "四川卫视": [
+      {
+        "url": "https://live.264788.xyz/channel/sichuanweishi?streamid=e0e4c1e9fb61857f5bc4b6bb9a2bdcca&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.134,
+        "bytes": 262144,
+        "speed_kbps": 1910.02,
+        "score": 91.6,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "http://112.30.73.119:9901/tsfile/live/1410_1.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.5345,
+        "bytes": 131775,
+        "speed_kbps": 83.86,
+        "score": 64.49,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream;charset=utf-8",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "http://183.223.157.33:9901/tsfile/live/0123_1.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.4631,
+        "bytes": 131511,
+        "speed_kbps": 52.14,
+        "score": 60.91,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      }
+    ],
+    "CCTV1综合": [],
+    "cctv1hd": [],
+    "CCTV-1HD": [],
+    "2026-07-14 09:59:25": [],
+    "CCTV-1综合高清": [],
+    "CCTV-1ç»¼å": [],
+    "CCTV-01é«ç ": [],
+    "CCTV-01": [],
+    "CCTV-01山东": [],
+    "CCTV-2": [
+      {
+        "url": "http://111.4.59.41:60901/tsfile/live/1000_1.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.5838,
+        "bytes": 131745,
+        "speed_kbps": 81.23,
+        "score": 64.28,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt"
+        ]
+      },
+      {
+        "url": "http://139.227.21.22:9901/tsfile/live/0002_1.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.742,
+        "bytes": 131501,
+        "speed_kbps": 73.72,
+        "score": 63.62,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt"
+        ]
+      },
+      {
+        "url": "http://221.7.175.154:8445/tsfile/live/1001_1.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.824,
+        "bytes": 131516,
+        "speed_kbps": 70.41,
+        "score": 63.29,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream;charset=utf-8",
+        "sources": [
+          "https://d.kstore.dev/download/12441/ds9.txt"
+        ]
+      }
+    ],
+    "CCTV-2HD": [],
+    "cctv2hd": [],
+    "CCTV2财经": [],
+    "CCTV-2财经高清": [],
+    "CCTV-2è´¢ç»": [],
+    "CCTV-02é«ç ": [],
+    "CCTV-02": [],
+    "CCTV-02山东": [],
+    "CCTV-3": [
+      {
+        "url": "http://139.227.21.22:9901/tsfile/live/0003_1.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.7642,
+        "bytes": 131501,
+        "speed_kbps": 72.79,
+        "score": 63.53,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt"
+        ]
+      },
+      {
+        "url": "http://222.134.241.132:9909/tsfile/live/0003_1.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.8138,
+        "bytes": 131490,
+        "speed_kbps": 70.8,
+        "score": 63.33,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt"
+        ]
+      },
+      {
+        "url": "http://221.7.175.154:8445/tsfile/live/1002_1.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.828,
+        "bytes": 131516,
+        "speed_kbps": 70.26,
+        "score": 63.27,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream;charset=utf-8",
+        "sources": [
+          "https://d.kstore.dev/download/12441/ds9.txt"
+        ]
+      }
+    ],
+    "CCTV-3HD": [],
+    "cctv3hd": [],
+    "CCTV-3综艺高清": [],
+    "CCTV3综艺": [
+      {
+        "url": "http://121.57.88.206:898/hls/3/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.0856,
+        "bytes": 131318,
+        "speed_kbps": 61.49,
+        "score": 62.28,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://183.11.239.36:808/hls/91/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 5.1224,
+        "bytes": 131316,
+        "speed_kbps": 25.03,
+        "score": 52.63,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/nianxinmj/nxpz/refs/heads/main/lib/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "CCTV3綜藝": [],
+    "CCTV-3ç»¼èº": [],
+    "CCTV-03é«ç ": [],
+    "CCTV-03": [],
+    "CCTV-03山东": [],
+    "CCTV-4国际": [
+      {
+        "url": "http://120.40.39.246:352/newlive/live/hls/4/live.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 4.8837,
+        "bytes": 131310,
+        "speed_kbps": 26.26,
+        "score": 53.01,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://gh-proxy.com/https://raw.githubusercontent.com/hanhan8127/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "CCTV-5": [
+      {
+        "url": "http://221.7.175.154:8445/tsfile/live/0113_1.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.8168,
+        "bytes": 131511,
+        "speed_kbps": 70.69,
+        "score": 63.32,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream;charset=utf-8",
+        "sources": [
+          "https://d.kstore.dev/download/12441/ds9.txt"
+        ]
+      },
+      {
+        "url": "http://171.15.18.199:8180/TV00000000000000000005@HHZT",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.4886,
+        "bytes": 262144,
+        "speed_kbps": 102.87,
+        "score": 62.11,
+        "reason": "ok_direct",
+        "content_type": "application/octet-stream",
+        "sources": [
+          "https://d.kstore.dev/download/12441/ds9.txt"
+        ]
+      },
+      {
+        "url": "http://120.40.39.246:352/newlive/live/hls/5/live.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.1885,
+        "bytes": 131310,
+        "speed_kbps": 40.22,
+        "score": 58.44,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://gh-proxy.com/https://raw.githubusercontent.com/hanhan8127/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "CCTV-4": [],
+    "CCTV-5HD": [],
+    "CCTV5体育": [],
+    "CCTV-5+HD": [],
+    "CCTV-5ä½è²": [],
+    "CCTV-05é«ç ": [],
+    "CCTV-05": [],
+    "CCTV-05山东": [],
+    "CCTV-05åªå": [],
+    "CCTV-5+赛事": [
+      {
+        "url": "https://piccpndali.v.myalicdn.com/audio/cctv5plus_2.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.5755,
+        "bytes": 131373,
+        "speed_kbps": 222.94,
+        "score": 70.85,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://gh-proxy.com/https://raw.githubusercontent.com/hanhan8127/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://120.40.39.246:352/newlive/live/hls/6/live.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.2351,
+        "bytes": 131310,
+        "speed_kbps": 57.37,
+        "score": 61.73,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://gh-proxy.com/https://raw.githubusercontent.com/hanhan8127/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "CCTV-6": [
+      {
+        "url": "http://221.7.175.154:8445/tsfile/live/1004_1.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.834,
+        "bytes": 131516,
+        "speed_kbps": 70.03,
+        "score": 63.25,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream;charset=utf-8",
+        "sources": [
+          "https://d.kstore.dev/download/12441/ds9.txt"
+        ]
+      },
+      {
+        "url": "http://120.40.39.246:352/newlive/live/hls/7/live.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.8482,
+        "bytes": 131310,
+        "speed_kbps": 69.38,
+        "score": 63.19,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://gh-proxy.com/https://raw.githubusercontent.com/hanhan8127/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://171.15.18.199:8180/TV00000000000000000006@HHZT",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.5187,
+        "bytes": 262144,
+        "speed_kbps": 72.75,
+        "score": 58.26,
+        "reason": "ok_direct",
+        "content_type": "application/octet-stream",
+        "sources": [
+          "https://d.kstore.dev/download/12441/ds9.txt"
+        ]
+      }
+    ],
+    "CCTV-5+": [],
+    "CCTV-6HD": [],
+    "cctv6hd": [],
+    "CCTV6电影": [],
+    "CCTV6電影": [],
+    "CCTV-6电影高清": [],
+    "CCTV-6çµå½±": [],
+    "CCTV-06é«ç ": [],
+    "CCTV-06": [],
+    "CCTV-06山东": [],
+    "CCTV-06åªå": [],
+    "CCTV-06咪咕": [],
+    "CCTV-7军事": [
+      {
+        "url": "http://120.40.39.246:352/newlive/live/hls/8/live.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.0486,
+        "bytes": 131310,
+        "speed_kbps": 42.06,
+        "score": 58.91,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://gh-proxy.com/https://raw.githubusercontent.com/hanhan8127/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "CCTV-8": [
+      {
+        "url": "http://171.15.18.199:8180/TV00000000000000000008@HHZT",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.9949,
+        "bytes": 262144,
+        "speed_kbps": 128.33,
+        "score": 64.22,
+        "reason": "ok_direct",
+        "content_type": "application/octet-stream",
+        "sources": [
+          "https://d.kstore.dev/download/12441/ds9.txt"
+        ]
+      },
+      {
+        "url": "http://221.7.175.154:8445/tsfile/live/1006_1.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.8096,
+        "bytes": 131516,
+        "speed_kbps": 70.97,
+        "score": 63.35,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream;charset=utf-8",
+        "sources": [
+          "https://d.kstore.dev/download/12441/ds9.txt"
+        ]
+      },
+      {
+        "url": "http://120.40.39.246:352/newlive/live/hls/9/live.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.6082,
+        "bytes": 131310,
+        "speed_kbps": 49.17,
+        "score": 60.4,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://gh-proxy.com/https://raw.githubusercontent.com/hanhan8127/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "CCTV-7国防军事·": [],
+    "CCTV-8HD": [],
+    "CCTV8电视剧": [
+      {
+        "url": "http://183.11.239.36:808/hls/96/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.4123,
+        "bytes": 131316,
+        "speed_kbps": 37.58,
+        "score": 57.7,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/nianxinmj/nxpz/refs/heads/main/lib/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "cctv8hd": [],
+    "CCTV-7": [],
+    "CCTV7": [],
+    "CCTV-8电视剧高清": [],
+    "CCTV8電視劇": [],
+    "CCTV-8çµè§å§": [],
+    "CCTV-08é«ç ": [],
+    "CCTV-08": [],
+    "CCTV-08山东": [],
+    "CCTV-08åªå": [],
+    "CCTV-08咪咕": [],
+    "CCTV-9纪录": [
+      {
+        "url": "https://live.264788.xyz/channel/cctv9?streamid=849c59eb8f64e0b008b7d63ed949bd9a&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1757,
+        "bytes": 262144,
+        "speed_kbps": 1457.42,
+        "score": 91.47,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "http://120.40.39.246:352/newlive/live/hls/10/live.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.3708,
+        "bytes": 131310,
+        "speed_kbps": 54.09,
+        "score": 61.24,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://gh-proxy.com/https://raw.githubusercontent.com/hanhan8127/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "https://live.264788.xyz/channel/cctv9?streamid=a1c62cd1a08c871f0139cd4415979edd&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1871,
+        "bytes": 262144,
+        "speed_kbps": 1368.5,
+        "score": 91.44,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      }
+    ],
+    "CCTV-09åªå": [],
+    "CCTV-09咪咕": [],
+    "CCTV-10科教": [
+      {
+        "url": "https://live.264788.xyz/channel/cctv10?streamid=3b93fbcc94fb84f897deb567d7a2a4ab&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1586,
+        "bytes": 262144,
+        "speed_kbps": 1613.9,
+        "score": 91.52,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "http://120.40.39.246:352/newlive/live/hls/11/live.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.069,
+        "bytes": 131310,
+        "speed_kbps": 61.98,
+        "score": 62.34,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://gh-proxy.com/https://raw.githubusercontent.com/hanhan8127/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "https://live.264788.xyz/channel/cctv10?streamid=61d2faba189c1fee2c26fb733648e7d2&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1594,
+        "bytes": 262144,
+        "speed_kbps": 1605.57,
+        "score": 91.52,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      }
+    ],
+    "CCTV-10åªå": [],
+    "CCTV-10咪咕": [],
+    "CCTV-11戏曲": [
+      {
+        "url": "https://live.264788.xyz/channel/cctv11?streamid=7b9945eb3e3a3628d7a273fff55b8d1e&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1356,
+        "bytes": 262144,
+        "speed_kbps": 1887.85,
+        "score": 91.59,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "http://120.40.39.246:352/newlive/live/hls/12/live.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.4554,
+        "bytes": 131310,
+        "speed_kbps": 52.23,
+        "score": 60.94,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://gh-proxy.com/https://raw.githubusercontent.com/hanhan8127/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "https://live.264788.xyz/channel/cctv11?streamid=61be47c4b483b6f38fc816d9d022a325&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1456,
+        "bytes": 262144,
+        "speed_kbps": 1758.66,
+        "score": 91.56,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      }
+    ],
+    "CCTV-10": [],
+    "CCTV10": [],
+    "CCTV-11åªå": [],
+    "CCTV-11咪咕": [],
+    "CCTV-12社会": [
+      {
+        "url": "http://120.40.39.246:352/newlive/live/hls/13/live.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.5622,
+        "bytes": 131310,
+        "speed_kbps": 36.0,
+        "score": 57.21,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://gh-proxy.com/https://raw.githubusercontent.com/hanhan8127/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "CCTV-14少儿": [
+      {
+        "url": "https://live.264788.xyz/channel/cctv14?streamid=cabc817805412b81748c942b2dcb39c5&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1335,
+        "bytes": 262144,
+        "speed_kbps": 1917.76,
+        "score": 91.6,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "http://120.40.39.246:352/newlive/live/hls/15/live.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 4.3653,
+        "bytes": 131310,
+        "speed_kbps": 29.38,
+        "score": 54.64,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://gh-proxy.com/https://raw.githubusercontent.com/hanhan8127/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "https://live.264788.xyz/channel/cctv14?streamid=09d8589b06d81eb7f173cadca39fb444&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1444,
+        "bytes": 262144,
+        "speed_kbps": 1772.29,
+        "score": 91.57,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      }
+    ],
+    "CCTV-12社会与法": [],
+    "CCTV-12": [],
+    "CCTV12": [],
+    "CCTV-14åªå": [],
+    "CCTV-14咪咕": [],
+    "CCTV-14": [],
+    "CCTV-15音乐": [
+      {
+        "url": "https://live.264788.xyz/channel/cctv15?streamid=6d7a6859e22aa51e7c09b29a9f1848d7&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1376,
+        "bytes": 262144,
+        "speed_kbps": 1860.0,
+        "score": 91.59,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "http://120.40.39.246:352/newlive/live/hls/16/live.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.118,
+        "bytes": 131310,
+        "speed_kbps": 60.54,
+        "score": 62.16,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://gh-proxy.com/https://raw.githubusercontent.com/hanhan8127/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "https://live.264788.xyz/channel/cctv15?streamid=487b3ba4a02ac11c8df5b62e9d5e3deb&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1453,
+        "bytes": 262144,
+        "speed_kbps": 1761.48,
+        "score": 91.56,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      }
+    ],
+    "CCTV14少儿": [],
+    "CCTV14": [],
+    "CCTV-15åªå": [],
+    "CCTV-15咪咕": [],
+    "CCTV-16奥运": [],
+    "CCTV-15": [],
+    "CCTV-17农村": [],
+    "CCTV-16åªå": [],
+    "CCTV-16咪咕": [],
+    "CGTN": [
+      {
+        "url": "http://english-livetx.cgtn.com/hls/yypdyyctzb_hd.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.5175,
+        "bytes": 131484,
+        "speed_kbps": 248.12,
+        "score": 71.65,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://gh-proxy.com/https://raw.githubusercontent.com/maoystv/6/main/TV/live20220813.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "https://0472.org/hls/cgtn.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.8922,
+        "bytes": 131613,
+        "speed_kbps": 144.05,
+        "score": 67.92,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://111.221.137.234:44330/tsfile/live/1012_1.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 5.3475,
+        "bytes": 131920,
+        "speed_kbps": 24.09,
+        "score": 52.6,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      }
+    ],
+    "CGTN英语": [
+      {
+        "url": "http://english-livetx.cgtn.com/hls/yypdyyctzb_hd.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.5175,
+        "bytes": 131484,
+        "speed_kbps": 248.12,
+        "score": 71.65,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://gh-proxy.com/https://raw.githubusercontent.com/maoystv/6/main/TV/live20220813.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "https://0472.org/hls/cgtn.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.8922,
+        "bytes": 131613,
+        "speed_kbps": 144.05,
+        "score": 67.92,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "CCTV-16奥林匹克": [],
+    "CCTV-17农业农村": [],
+    "CCTV第一剧场": [
+      {
+        "url": "https://live.264788.xyz/channel/diyijuchang?streamid=e9b0fb1ca135a4aeae12944494883794&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1349,
+        "bytes": 262144,
+        "speed_kbps": 1897.52,
+        "score": 91.6,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
+        ]
+      },
+      {
+        "url": "https://live.264788.xyz/channel/diyijuchang?streamid=d81e188b59ece96b7e8f1ce34aea3ef8&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1384,
+        "bytes": 262144,
+        "speed_kbps": 1850.23,
+        "score": 91.58,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
+        ]
+      },
+      {
+        "url": "http://hmfs.f3322.net:3388/hls/21/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 16.1686,
+        "bytes": 131318,
+        "speed_kbps": 7.93,
+        "score": 52.2,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "第一剧场": [
+      {
+        "url": "https://live.264788.xyz/channel/diyijuchang?streamid=e9b0fb1ca135a4aeae12944494883794&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1349,
+        "bytes": 262144,
+        "speed_kbps": 1897.52,
+        "score": 91.6,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
+        ]
+      },
+      {
+        "url": "https://live.264788.xyz/channel/diyijuchang?streamid=d81e188b59ece96b7e8f1ce34aea3ef8&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1384,
+        "bytes": 262144,
+        "speed_kbps": 1850.23,
+        "score": 91.58,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
+        ]
+      }
+    ],
+    "CCTV风云剧场": [],
+    "CCTV兵器科技": [],
+    "CCTV怀旧剧场": [
+      {
+        "url": "https://live.264788.xyz/channel/huaijiujuchang?streamid=7e5d1abdddde08f588234f3f640f75ff&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.133,
+        "bytes": 262144,
+        "speed_kbps": 1924.45,
+        "score": 91.6,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
+        ]
+      }
+    ],
+    "怀旧剧场": [
+      {
+        "url": "https://live.264788.xyz/channel/huaijiujuchang?streamid=7e5d1abdddde08f588234f3f640f75ff&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.133,
+        "bytes": 262144,
+        "speed_kbps": 1924.45,
+        "score": 91.6,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
+        ]
+      }
+    ],
+    "CCTV风云音乐": [],
+    "CCTV央视台球": [],
+    "CCTV风云足球": [
+      {
+        "url": "http://183.11.239.36:808/hls/133/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 4.1708,
+        "bytes": 131306,
+        "speed_kbps": 30.74,
+        "score": 55.26,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://d.kstore.dev/download/12441/ds9.txt",
+          "https://wget.la/https://raw.githubusercontent.com/nianxinmj/nxpz/refs/heads/main/lib/live.txt"
+        ]
+      }
+    ],
+    "CCTV文化精品": [
+      {
+        "url": "https://live.264788.xyz/channel/yangshiwenhuajingpin?streamid=bc185d1ef1e528922e83efd845006277&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1358,
+        "bytes": 262144,
+        "speed_kbps": 1884.6,
+        "score": 91.59,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
+        ]
+      }
+    ],
+    "文化精品": [
+      {
+        "url": "https://live.264788.xyz/channel/yangshiwenhuajingpin?streamid=bc185d1ef1e528922e83efd845006277&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1358,
+        "bytes": 262144,
+        "speed_kbps": 1884.6,
+        "score": 91.59,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
+        ]
+      }
+    ],
+    "央视文化精品": [
+      {
+        "url": "https://live.264788.xyz/channel/yangshiwenhuajingpin?streamid=bc185d1ef1e528922e83efd845006277&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1358,
+        "bytes": 262144,
+        "speed_kbps": 1884.6,
+        "score": 91.59,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
+        ]
+      }
+    ],
+    "风云足球": [
+      {
+        "url": "http://183.11.239.36:808/hls/133/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 4.1708,
+        "bytes": 131306,
+        "speed_kbps": 30.74,
+        "score": 55.26,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://d.kstore.dev/download/12441/ds9.txt",
+          "https://wget.la/https://raw.githubusercontent.com/nianxinmj/nxpz/refs/heads/main/lib/live.txt"
+        ]
+      }
+    ],
+    "CCTVé£äºè¶³ç": [
+      {
+        "url": "http://183.11.239.36:808/hls/133/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 4.1708,
+        "bytes": 131306,
+        "speed_kbps": 30.74,
+        "score": 55.26,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://d.kstore.dev/download/12441/ds9.txt",
+          "https://wget.la/https://raw.githubusercontent.com/nianxinmj/nxpz/refs/heads/main/lib/live.txt"
+        ]
+      }
+    ],
+    "CCTV电视指南": [],
+    "CCTV高尔夫网球": [],
+    "CCTV女性时尚": [],
+    "浙江卫视": [
+      {
+        "url": "http://ali-m-l.cztv.com:80/channels/lantian/channel001/1080p.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.8165,
+        "bytes": 131371,
+        "speed_kbps": 70.62,
+        "score": 63.32,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "https://ali-m-l.cztv.com/channels/lantian/channel001/1080p.m3u8?",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.9614,
+        "bytes": 131371,
+        "speed_kbps": 65.41,
+        "score": 62.75,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://ali-vl.cztv.com/channels/lantian/channel001/360p.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.2718,
+        "bytes": 131365,
+        "speed_kbps": 56.47,
+        "score": 61.6,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "CCTV世界地理": [
+      {
+        "url": "https://shcm-stream-cf1.stream.264788.xyz/cms001/ch00000090990000001620/index.m3u8?streamid=8a034b40397504e25b3775c772237996&streamkey=01vY5fRxC8VyKg4oq30vfikHXTCAKySLP29l6OG91kQlzDttHgzNLkUw5kivm3PfNsVHJv5FgdsPBYFYI2IWpt7tfRCuFHqLT2pvX67ubMds8jl2DHtvOh0&token=1775754349-4f33f4f84a4abeba-0-91687dc8c9325092efa1d00f330d2710",
+        "ok": true,
+        "blocked": false,
+        "latency": 6.7012,
+        "bytes": 139389,
+        "speed_kbps": 20.31,
+        "score": 52.51,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
+        ]
+      },
+      {
+        "url": "http://hmfs.f3322.net:3388/hls/28/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 11.4882,
+        "bytes": 131318,
+        "speed_kbps": 11.16,
+        "score": 52.28,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "世界地理": [
+      {
+        "url": "https://shcm-stream-cf1.stream.264788.xyz/cms001/ch00000090990000001620/index.m3u8?streamid=8a034b40397504e25b3775c772237996&streamkey=01vY5fRxC8VyKg4oq30vfikHXTCAKySLP29l6OG91kQlzDttHgzNLkUw5kivm3PfNsVHJv5FgdsPBYFYI2IWpt7tfRCuFHqLT2pvX67ubMds8jl2DHtvOh0&token=1775754349-4f33f4f84a4abeba-0-91687dc8c9325092efa1d00f330d2710",
+        "ok": true,
+        "blocked": false,
+        "latency": 6.7012,
+        "bytes": 139389,
+        "speed_kbps": 20.31,
+        "score": 52.51,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
+        ]
+      },
+      {
+        "url": "http://hmfs.f3322.net:3388/hls/28/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 11.4882,
+        "bytes": 131318,
+        "speed_kbps": 11.16,
+        "score": 52.28,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "CCTVä¸çå°ç": [
+      {
+        "url": "http://hmfs.f3322.net:3388/hls/28/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 11.4882,
+        "bytes": 131318,
+        "speed_kbps": 11.16,
+        "score": 52.28,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "æµæ±å«è§": [
+      {
+        "url": "http://ali-m-l.cztv.com:80/channels/lantian/channel001/1080p.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.8165,
+        "bytes": 131371,
+        "speed_kbps": 70.62,
+        "score": 63.32,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "https://ali-m-l.cztv.com/channels/lantian/channel001/1080p.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.1169,
+        "bytes": 131371,
+        "speed_kbps": 60.6,
+        "score": 62.16,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://d.kstore.dev/download/12441/ds9.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://ali-xwl.cztv.com/live/channel011080Plxw.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 6.3999,
+        "bytes": 131425,
+        "speed_kbps": 20.05,
+        "score": 52.5,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://develop202.github.io/migu_video/interface.txt",
+          "https://gh.927223.xyz/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      }
+    ],
+    "浙江衛視": [],
+    "æµæ±å«è§åªå": [],
+    "CCTVç¬¬ä¸å§åº": [
+      {
+        "url": "http://hmfs.f3322.net:3388/hls/21/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 16.1686,
+        "bytes": 131318,
+        "speed_kbps": 7.93,
+        "score": 52.2,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "浙江卫视HD": [],
+    "浙江卫视高清": [],
+    "æµæ±å«è§HD": [],
+    "浙江卫视[1920*1080]": [],
+    "浙江卫视超清": [
+      {
+        "url": "http://ali-xwl.cztv.com/live/channel011080Plxw.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 6.3999,
+        "bytes": 131425,
+        "speed_kbps": 20.05,
+        "score": 52.5,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://develop202.github.io/migu_video/interface.txt",
+          "https://gh.927223.xyz/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      }
+    ],
+    "浙江卫视山东": [],
+    "浙江卫视4K": [],
+    "江苏卫视": [
+      {
+        "url": "http://112.27.235.94:8000/hls/32/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.1093,
+        "bytes": 131324,
+        "speed_kbps": 60.8,
+        "score": 62.19,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://222.169.85.8:9901/tsfile/live/0127_1.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.1983,
+        "bytes": 131511,
+        "speed_kbps": 58.42,
+        "score": 61.87,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://182.150.23.74:808/hls/18/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.3605,
+        "bytes": 131322,
+        "speed_kbps": 38.16,
+        "score": 57.87,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "江蘇衛視": [],
+    "æ±èå«è§åªå": [],
+    "江苏卫视HD": [],
+    "æ±èå«è§": [],
+    "æ±èå«è§HD": [],
+    "江苏卫视超清": [],
+    "江苏卫视高清": [],
+    "江苏卫视咪咕": [],
+    "北京卫视": [
+      {
+        "url": "http://112.27.235.94:8000/hls/27/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.982,
+        "bytes": 131324,
+        "speed_kbps": 64.71,
+        "score": 62.67,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://222.134.245.16:9901/tsfile/live/0122_1.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.0412,
+        "bytes": 131511,
+        "speed_kbps": 42.23,
+        "score": 58.93,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://satellitepull.cnr.cn/live/wxbtv/playlist.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.3785,
+        "bytes": 86630,
+        "speed_kbps": 25.04,
+        "score": 57.49,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "北京衛視": [],
+    "åäº¬å«è§åªå": [],
+    "åäº¬å«è§": [
+      {
+        "url": "http://satellitepull.cnr.cn/live/wxbtv/playlist.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.3785,
+        "bytes": 86630,
+        "speed_kbps": 25.04,
+        "score": 57.49,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "北京卫视HD": [],
+    "北京卫视4K": [],
+    "北京卫视山东": [],
+    "湖南卫视": [
+      {
+        "url": "https://t.freetv.fun/live/hu-nan-wei-shi-13.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.0083,
+        "bytes": 133845,
+        "speed_kbps": 129.63,
+        "score": 67.22,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://hlsal-ldvt.qing.mgtv.com/nn_live/nn_x64/dWlwPTEyNy4wLjAuMSZ1aWQ9cWluZy1jbXMmbm5fdGltZXpvbmU9OCZjZG5leF9pZD1hbF9obHNfbGR2dCZ1dWlkPTliODY4NmU5ZTM2YzYwMmMmZT02OTE0NjA0JnY9MSZpZD1ITldTWkdTVCZzPTcwN2RiYTc2YzJjNmJmMTQ4MmUyZGYzOWU2NWM3YWFi/HNWSZGST.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.0155,
+        "bytes": 131303,
+        "speed_kbps": 126.27,
+        "score": 67.11,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://210.245.166.84:1299/live/live.txt",
+          "http://210.245.166.84:1299/live/live1.txt",
+          "https://develop202.github.io/migu_video/interface.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://gh-proxy.com/https://raw.githubusercontent.com/maoystv/6/main/TV/live20220813.txt",
+          "https://gh.927223.xyz/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://111.221.137.234:44330/tsfile/live/0122_1.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.4351,
+        "bytes": 131910,
+        "speed_kbps": 37.5,
+        "score": 57.63,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      }
+    ],
+    "æ¹åå«è§åªå": [],
+    "湖南卫视4K": [
+      {
+        "url": "http://hlsal-ldvt.qing.mgtv.com/nn_live/nn_x64/dWlwPTEyNy4wLjAuMSZ1aWQ9cWluZy1jbXMmbm5fdGltZXpvbmU9OCZjZG5leF9pZD1hbF9obHNfbGR2dCZ1dWlkPTliODY4NmU5ZTM2YzYwMmMmZT02OTE0NjA0JnY9MSZpZD1ITldTWkdTVCZzPTcwN2RiYTc2YzJjNmJmMTQ4MmUyZGYzOWU2NWM3YWFi/HNWSZGST.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.0155,
+        "bytes": 131303,
+        "speed_kbps": 126.27,
+        "score": 67.11,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://210.245.166.84:1299/live/live.txt",
+          "http://210.245.166.84:1299/live/live1.txt",
+          "https://develop202.github.io/migu_video/interface.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://gh-proxy.com/https://raw.githubusercontent.com/maoystv/6/main/TV/live20220813.txt",
+          "https://gh.927223.xyz/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://hlsal-ldvt.qing.mgtv.com/nn_live/nn_x64/Y2RuZXhfaWQ9YWxfaGxzX2xkdnQmZT02OTE0NjA0JnY9MSZpZD1ITldTWkdTVCZzPTcwN2RiYTc2YzJjNmJmMTQ4MmUyZGYzOWU2NWM3YWFi/HNWSZGST.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.4453,
+        "bytes": 131303,
+        "speed_kbps": 88.72,
+        "score": 64.88,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://develop202.github.io/migu_video/interface.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://gh-proxy.com/https://raw.githubusercontent.com/maoystv/6/main/TV/live20220813.txt",
+          "https://gh.927223.xyz/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "湖南卫视HD": [],
+    "æ¹åå«è§HD": [],
+    "湖南衛視": [],
+    "æ¹åå«è§": [
+      {
+        "url": "http://hlsal-ldvt.qing.mgtv.com/nn_live/nn_x64/Y2RuZXhfaWQ9YWxfaGxzX2xkdnQmZT02OTE0NjA0JnY9MSZpZD1ITldTWkdTVCZzPTcwN2RiYTc2YzJjNmJmMTQ4MmUyZGYzOWU2NWM3YWFi/HNWSZGST.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.4453,
+        "bytes": 131303,
+        "speed_kbps": 88.72,
+        "score": 64.88,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://develop202.github.io/migu_video/interface.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://gh-proxy.com/https://raw.githubusercontent.com/maoystv/6/main/TV/live20220813.txt",
+          "https://gh.927223.xyz/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://satellitepull.cnr.cn/live/wx32hunws/playlist.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.5509,
+        "bytes": 82122,
+        "speed_kbps": 22.58,
+        "score": 56.91,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "湖南卫视超清": [
+      {
+        "url": "http://hlsal-ldvt.qing.mgtv.com/nn_live/nn_x64/Y2RuZXhfaWQ9YWxfaGxzX2xkdnQmZT02OTE0NjA0JnY9MSZpZD1ITldTWkdTVCZzPTcwN2RiYTc2YzJjNmJmMTQ4MmUyZGYzOWU2NWM3YWFi/HNWSZGST.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.4453,
+        "bytes": 131303,
+        "speed_kbps": 88.72,
+        "score": 64.88,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://develop202.github.io/migu_video/interface.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://gh-proxy.com/https://raw.githubusercontent.com/maoystv/6/main/TV/live20220813.txt",
+          "https://gh.927223.xyz/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "湖南卫视高清": [],
+    "湖南卫视4k超高清频道[3840*2160]": [
+      {
+        "url": "http://hlsal-ldvt.qing.mgtv.com/nn_live/nn_x64/dWlwPTEyNy4wLjAuMSZ1aWQ9cWluZy1jbXMmbm5fdGltZXpvbmU9OCZjZG5leF9pZD1hbF9obHNfbGR2dCZ1dWlkPTliODY4NmU5ZTM2YzYwMmMmZT02OTE0NjA0JnY9MSZpZD1ITldTWkdTVCZzPTcwN2RiYTc2YzJjNmJmMTQ4MmUyZGYzOWU2NWM3YWFi/HNWSZGST.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.0155,
+        "bytes": 131303,
+        "speed_kbps": 126.27,
+        "score": 67.11,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://210.245.166.84:1299/live/live.txt",
+          "http://210.245.166.84:1299/live/live1.txt",
+          "https://develop202.github.io/migu_video/interface.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://gh-proxy.com/https://raw.githubusercontent.com/maoystv/6/main/TV/live20220813.txt",
+          "https://gh.927223.xyz/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "湖南4K": [
+      {
+        "url": "http://hlsal-ldvt.qing.mgtv.com/nn_live/nn_x64/dWlwPTEyNy4wLjAuMSZ1aWQ9cWluZy1jbXMmbm5fdGltZXpvbmU9OCZjZG5leF9pZD1hbF9obHNfbGR2dCZ1dWlkPTliODY4NmU5ZTM2YzYwMmMmZT02OTE0NjA0JnY9MSZpZD1ITldTWkdTVCZzPTcwN2RiYTc2YzJjNmJmMTQ4MmUyZGYzOWU2NWM3YWFi/HNWSZGST.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.0155,
+        "bytes": 131303,
+        "speed_kbps": 126.27,
+        "score": 67.11,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://210.245.166.84:1299/live/live.txt",
+          "http://210.245.166.84:1299/live/live1.txt",
+          "https://develop202.github.io/migu_video/interface.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://gh-proxy.com/https://raw.githubusercontent.com/maoystv/6/main/TV/live20220813.txt",
+          "https://gh.927223.xyz/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "æ¹å4K": [
+      {
+        "url": "http://hlsal-ldvt.qing.mgtv.com/nn_live/nn_x64/dWlwPTEyNy4wLjAuMSZ1aWQ9cWluZy1jbXMmbm5fdGltZXpvbmU9OCZjZG5leF9pZD1hbF9obHNfbGR2dCZ1dWlkPTliODY4NmU5ZTM2YzYwMmMmZT02OTE0NjA0JnY9MSZpZD1ITldTWkdTVCZzPTcwN2RiYTc2YzJjNmJmMTQ4MmUyZGYzOWU2NWM3YWFi/HNWSZGST.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.0155,
+        "bytes": 131303,
+        "speed_kbps": 126.27,
+        "score": 67.11,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://210.245.166.84:1299/live/live.txt",
+          "http://210.245.166.84:1299/live/live1.txt",
+          "https://develop202.github.io/migu_video/interface.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://gh-proxy.com/https://raw.githubusercontent.com/maoystv/6/main/TV/live20220813.txt",
+          "https://gh.927223.xyz/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "湖南卫视山东": [],
+    "ANTV": [
+      {
+        "url": "http://antvlive.ab5c6921.cdnviet.com/antv/playlist.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 4.4786,
+        "bytes": 131359,
+        "speed_kbps": 28.64,
+        "score": 54.28,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      }
+    ],
+    "东方卫视": [
+      {
+        "url": "https://txmov2.a.kwimgs.com/bs3/video-hls/5219953535631090825_hlsb.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.6223,
+        "bytes": 300316,
+        "speed_kbps": 180.78,
+        "score": 66.65,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://bp-resource-dfl.bestv.cn/155/3/video.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.0854,
+        "bytes": 131923,
+        "speed_kbps": 61.78,
+        "score": 62.29,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://210.245.166.84:1299/live/live.txt",
+          "http://210.245.166.84:1299/live/live1.txt",
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://gh-proxy.com/https://raw.githubusercontent.com/maoystv/6/main/TV/live20220813.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://124.116.183.146:9901/tsfile/live/0107_1.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.1635,
+        "bytes": 131511,
+        "speed_kbps": 59.36,
+        "score": 61.99,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "東方衛視": [],
+    "ä¸æ¹å«è§": [
+      {
+        "url": "http://bp-resource-dfl.bestv.cn/155/3/video.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.0854,
+        "bytes": 131923,
+        "speed_kbps": 61.78,
+        "score": 62.29,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://210.245.166.84:1299/live/live.txt",
+          "http://210.245.166.84:1299/live/live1.txt",
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://gh-proxy.com/https://raw.githubusercontent.com/maoystv/6/main/TV/live20220813.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "ä¸æ¹å«è§åªå": [],
+    "东方卫视HD": [],
+    "新纪实": [
+      {
+        "url": "http://bp-resource-dfl.bestv.cn/155/3/video.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.0854,
+        "bytes": 131923,
+        "speed_kbps": 61.78,
+        "score": 62.29,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://210.245.166.84:1299/live/live.txt",
+          "http://210.245.166.84:1299/live/live1.txt",
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://gh-proxy.com/https://raw.githubusercontent.com/maoystv/6/main/TV/live20220813.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "æ°çºªå®": [
+      {
+        "url": "http://bp-resource-dfl.bestv.cn/155/3/video.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.0854,
+        "bytes": 131923,
+        "speed_kbps": 61.78,
+        "score": 62.29,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://210.245.166.84:1299/live/live.txt",
+          "http://210.245.166.84:1299/live/live1.txt",
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://gh-proxy.com/https://raw.githubusercontent.com/maoystv/6/main/TV/live20220813.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "东方卫视超清": [],
+    "ä¸æ¹å«è§HD": [],
+    "东方卫视高清": [],
+    "东方卫视4K": [
+      {
+        "url": "http://bp-resource-dfl.bestv.cn/148/3/video.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.1656,
+        "bytes": 131924,
+        "speed_kbps": 59.49,
+        "score": 61.99,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://210.245.166.84:1299/live/live.txt",
+          "http://210.245.166.84:1299/live/live1.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "çä¸æ¹": [
+      {
+        "url": "http://bp-resource-dfl.bestv.cn/148/3/video.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.1656,
+        "bytes": 131924,
+        "speed_kbps": 59.49,
+        "score": 61.99,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://210.245.166.84:1299/live/live.txt",
+          "http://210.245.166.84:1299/live/live1.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "上海卫视": [
+      {
+        "url": "http://112.27.235.94:8000/hls/28/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.616,
+        "bytes": 131324,
+        "speed_kbps": 49.02,
+        "score": 60.38,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "安徽卫视": [
+      {
+        "url": "https://live.264788.xyz/channel/anhuiweishi?streamid=16954d54656b5b53a77b37ae4aa4d1e6&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1515,
+        "bytes": 262144,
+        "speed_kbps": 1689.26,
+        "score": 91.55,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "http://182.150.23.74:808/hls/25/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.0919,
+        "bytes": 131323,
+        "speed_kbps": 41.48,
+        "score": 58.76,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://111.221.137.234:44330/tsfile/live/0120_1.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.4614,
+        "bytes": 131905,
+        "speed_kbps": 37.21,
+        "score": 57.55,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      }
+    ],
+    "安徽衛視": [],
+    "å®å¾½å«è§åªå": [],
+    "å®å¾½å«è§": [
+      {
+        "url": "http://183.11.239.36:808/hls/40/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 9.6203,
+        "bytes": 131306,
+        "speed_kbps": 13.33,
+        "score": 52.33,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/nianxinmj/nxpz/refs/heads/main/lib/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "安徽卫视HD": [],
+    "安徽卫视山东": [],
+    "广东卫视": [
+      {
+        "url": "https://txmov2.a.kwimgs.com/upic/2023/01/26/09/BMjAyMzAxMjYwOTE3NDVfNzM5MzQzNzIyXzk0NjI1OTUwNTA3XzBfMw==_b_B81ddda927d33445d544befd008e60109.mp4",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.4856,
+        "bytes": 262144,
+        "speed_kbps": 527.13,
+        "score": 78.72,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://112.27.235.94:8000/hls/30/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.7764,
+        "bytes": 131324,
+        "speed_kbps": 72.2,
+        "score": 63.48,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://59.39.89.130:60901/tsfile/live/0125_1.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.2857,
+        "bytes": 131511,
+        "speed_kbps": 56.19,
+        "score": 61.55,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      }
+    ],
+    "å®å¾½å«è§é«ç ": [],
+    "å¹¿ä¸å«è§åªå": [],
+    "廣東衛視": [],
+    "å¹¿ä¸å«è§": [
+      {
+        "url": "https://txmov2.a.kwimgs.com/upic/2023/01/26/09/BMjAyMzAxMjYwOTE3NDVfNzM5MzQzNzIyXzk0NjI1OTUwNTA3XzBfMw==_b_B81ddda927d33445d544befd008e60109.mp4",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.4856,
+        "bytes": 262144,
+        "speed_kbps": 527.13,
+        "score": 78.72,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://183.11.239.36:808/hls/80/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 9.6205,
+        "bytes": 131316,
+        "speed_kbps": 13.33,
+        "score": 52.33,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "广东卫视HD": [],
+    "å¹¿ä¸å«è§HD": [],
+    "广东卫视高清": [],
+    "广东卫视咪咕": [],
+    "广东卫视山东": [],
+    "深圳卫视": [
+      {
+        "url": "http://38.64.72.148:80/hls/modn/list/4007/playlist.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.5746,
+        "bytes": 131700,
+        "speed_kbps": 223.82,
+        "score": 70.87,
+        "reason": "ok_m3u8",
+        "content_type": "text/vnd.trolltech.linguist",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/nianxinmj/nxpz/refs/heads/main/lib/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://112.27.235.94:8000/hls/33/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.0264,
+        "bytes": 131324,
+        "speed_kbps": 63.29,
+        "score": 62.5,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://59.39.89.130:60901/tsfile/live/0125_11.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.3752,
+        "bytes": 131516,
+        "speed_kbps": 54.07,
+        "score": 61.23,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "深圳衛視": [],
+    "æ·±å³å«è§åªå": [],
+    "æ·±å³å«è§": [
+      {
+        "url": "http://38.64.72.148:80/hls/modn/list/4007/playlist.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.5746,
+        "bytes": 131700,
+        "speed_kbps": 223.82,
+        "score": 70.87,
+        "reason": "ok_m3u8",
+        "content_type": "text/vnd.trolltech.linguist",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/nianxinmj/nxpz/refs/heads/main/lib/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://111.221.137.234:44330/tsfile/live/1013_1.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 6.3423,
+        "bytes": 131910,
+        "speed_kbps": 20.31,
+        "score": 52.51,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      }
+    ],
+    "深圳卫视HD": [],
+    "深圳卫视超清": [],
+    "æ·±å³å«è§HD": [],
+    "深圳卫视高清": [],
+    "深圳卫视山东": [],
+    "深圳卫视4K": [],
+    "辽宁卫视": [
+      {
+        "url": "http://101.66.194.121:9901/tsfile/live/0121_1.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.7242,
+        "bytes": 134009,
+        "speed_kbps": 75.9,
+        "score": 63.72,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://112.27.235.94:8000/hls/47/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.7234,
+        "bytes": 131324,
+        "speed_kbps": 74.41,
+        "score": 63.69,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://59.39.89.130:60901/tsfile/live/0125_13.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.8371,
+        "bytes": 131516,
+        "speed_kbps": 33.47,
+        "score": 56.33,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "遼寧衛視": [],
+    "è¾½å®å«è§åªå": [],
+    "è¾½å®å«è§": [],
+    "辽宁卫视HD": [],
+    "è¾½å®å«è§HD": [],
+    "辽宁卫视超清": [],
+    "辽宁卫视山东": [],
+    "海南卫视": [
+      {
+        "url": "http://183.223.157.33:9901/tsfile/live/1008_1.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.7772,
+        "bytes": 131516,
+        "speed_kbps": 72.27,
+        "score": 63.48,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://183.11.239.36:808/hls/124/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 5.4937,
+        "bytes": 131306,
+        "speed_kbps": 23.34,
+        "score": 52.58,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/nianxinmj/nxpz/refs/heads/main/lib/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://111.221.137.234:44330/tsfile/live/0117_1.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 14.0913,
+        "bytes": 131926,
+        "speed_kbps": 9.14,
+        "score": 52.23,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "海南衛視": [],
+    "æµ·åå«è§åªå": [],
+    "æµ·åå«è§": [
+      {
+        "url": "http://183.11.239.36:808/hls/124/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 5.4937,
+        "bytes": 131306,
+        "speed_kbps": 23.34,
+        "score": 52.58,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/nianxinmj/nxpz/refs/heads/main/lib/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "天津卫视": [
+      {
+        "url": "http://124.116.183.146:9901/tsfile/live/0135_1.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.2443,
+        "bytes": 131511,
+        "speed_kbps": 57.22,
+        "score": 61.7,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://112.27.235.94:8000/hls/42/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.4737,
+        "bytes": 131324,
+        "speed_kbps": 51.84,
+        "score": 60.88,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://182.150.23.74:808/hls/27/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 4.1592,
+        "bytes": 131322,
+        "speed_kbps": 30.83,
+        "score": 55.29,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "天津衛視": [],
+    "å¤©æ´¥å«è§åªå": [],
+    "天津卫视HD": [],
+    "天津卫视超清": [],
+    "å¤©æ´¥å«è§HD": [],
+    "å¤©æ´¥å«è§": [
+      {
+        "url": "http://111.221.137.234:44330/tsfile/live/0132_1.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 4.5,
+        "bytes": 131905,
+        "speed_kbps": 28.63,
+        "score": 54.22,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "http://112.46.85.60:8009/hls/44/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 7.699,
+        "bytes": 131307,
+        "speed_kbps": 16.66,
+        "score": 52.42,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "重庆卫视": [
+      {
+        "url": "http://101.66.194.129:9901/tsfile/live/0142_1.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.3595,
+        "bytes": 134018,
+        "speed_kbps": 55.47,
+        "score": 61.31,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://101.66.194.115:9901/tsfile/live/0142_1.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.0193,
+        "bytes": 134018,
+        "speed_kbps": 43.35,
+        "score": 59.03,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://115.207.211.191:9901/tsfile/live/0142_1.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 5.5653,
+        "bytes": 131511,
+        "speed_kbps": 23.08,
+        "score": 52.58,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      }
+    ],
+    "éåºå«è§åªå": [],
+    "重慶衛視": [],
+    "江西卫视": [
+      {
+        "url": "https://live.264788.xyz/channel/jiangxiweishi?streamid=555198f31caa33506ac6abb70d788959&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1503,
+        "bytes": 262144,
+        "speed_kbps": 1703.62,
+        "score": 91.55,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://112.27.235.94:8000/hls/44/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.8055,
+        "bytes": 131324,
+        "speed_kbps": 71.03,
+        "score": 63.36,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://59.39.89.130:60901/tsfile/live/0125_10.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.6411,
+        "bytes": 131516,
+        "speed_kbps": 35.27,
+        "score": 56.96,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "éåºå«è§": [
+      {
+        "url": "http://61.136.172.236:9901/tsfile/live/0142_1.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 23.629,
+        "bytes": 65975,
+        "speed_kbps": 2.73,
+        "score": 52.07,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream;charset=utf-8",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "重庆卫视HD": [],
+    "重庆卫视超清": [],
+    "重庆卫视山东": [],
+    "东南卫视": [
+      {
+        "url": "http://101.66.194.115:9901/tsfile/live/0137_1.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.7818,
+        "bytes": 134008,
+        "speed_kbps": 73.45,
+        "score": 63.49,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://101.66.194.129:9901/tsfile/live/0137_1.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.8423,
+        "bytes": 134008,
+        "speed_kbps": 71.04,
+        "score": 63.25,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://101.66.194.121:9901/tsfile/live/0137_1.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.7487,
+        "bytes": 134008,
+        "speed_kbps": 47.61,
+        "score": 59.94,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      }
+    ],
+    "東南衛視": [],
+    "ä¸åå«è§åªå": [],
+    "福建东南卫视": [],
+    "ä¸åå«è§": [
+      {
+        "url": "http://live.zohi.tv/video/s10001-fztv-3/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 6.7197,
+        "bytes": 131582,
+        "speed_kbps": 19.12,
+        "score": 52.48,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://61.136.172.236:9901/tsfile/live/0137_1.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 24.1196,
+        "bytes": 65975,
+        "speed_kbps": 2.67,
+        "score": 52.07,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream;charset=utf-8",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "东南卫视HD": [],
+    "ä¸åå«è§HD": [],
+    "东南卫视超清": [],
+    "东南卫视山东": [],
+    "甘肃卫视": [
+      {
+        "url": "https://live.264788.xyz/channel/gansuweishi?streamid=14e80bbc950736ab9b3f425be0eac464&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1447,
+        "bytes": 262144,
+        "speed_kbps": 1768.76,
+        "score": 91.57,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "https://t.freetv.fun/live/gan-su-wei-shi.php",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.5883,
+        "bytes": 133845,
+        "speed_kbps": 222.17,
+        "score": 70.79,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u"
+        ]
+      },
+      {
+        "url": "http://112.30.73.119:9901/tsfile/live/1406_1.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.4276,
+        "bytes": 133760,
+        "speed_kbps": 91.5,
+        "score": 65.0,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream;charset=utf-8",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      }
+    ],
+    "廣西衛視": [],
+    "å¹¿è¥¿å«è§åªå": [],
+    "广西卫视HD": [],
+    "å¹¿è¥¿å«è§": [
+      {
+        "url": "https://hlscdn.liangtv.cn/live/de0f97348eb84f62aa6b7d8cf0430770/dd505d87880c478f901f38560ca4d4e6.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.7176,
+        "bytes": 131822,
+        "speed_kbps": 74.95,
+        "score": 63.72,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://d.kstore.dev/download/12441/ds9.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      }
+    ],
+    "cctv8": [],
+    "æ¸¸é¢é": [
+      {
+        "url": "https://hlscdn.liangtv.cn/live/de0f97348eb84f62aa6b7d8cf0430770/dd505d87880c478f901f38560ca4d4e6.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.7176,
+        "bytes": 131822,
+        "speed_kbps": 74.95,
+        "score": 63.72,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://d.kstore.dev/download/12441/ds9.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      }
+    ],
+    "广西卫视山东": [],
+    "å¹¿è¥¿å«è§é«ç ": [],
+    "贵州卫视": [
+      {
+        "url": "https://live.264788.xyz/channel/guizhouweishi?streamid=091bd59ea031989839c23459bb8cc9d4&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1516,
+        "bytes": 262144,
+        "speed_kbps": 1688.61,
+        "score": 91.55,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://112.27.235.94:8000/hls/46/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.2277,
+        "bytes": 131324,
+        "speed_kbps": 57.57,
+        "score": 61.76,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://183.11.239.36:808/hls/49/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.2198,
+        "bytes": 131306,
+        "speed_kbps": 39.83,
+        "score": 58.34,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://wget.la/https://raw.githubusercontent.com/nianxinmj/nxpz/refs/heads/main/lib/live.txt"
+        ]
+      }
+    ],
+    "è´µå·å«è§åªå": [],
+    "貴州衛視": [],
+    "è´µå·å«è§": [
+      {
+        "url": "http://183.11.239.36:808/hls/49/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.2198,
+        "bytes": 131306,
+        "speed_kbps": 39.83,
+        "score": 58.34,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://wget.la/https://raw.githubusercontent.com/nianxinmj/nxpz/refs/heads/main/lib/live.txt"
+        ]
+      }
+    ],
+    "贵州卫视HD": [],
+    "è´µå·å«è§é«ç ": [],
+    "河北卫视": [
+      {
+        "url": "http://112.27.235.94:8000/hls/39/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.7286,
+        "bytes": 131324,
+        "speed_kbps": 74.19,
+        "score": 63.67,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://event.pull.hebtv.com/jishi/weishi_tingyun.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.1291,
+        "bytes": 131465,
+        "speed_kbps": 41.03,
+        "score": 58.64,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      }
+    ],
+    "河北衛視": [],
+    "æ²³åå«è§åªå": [],
+    "æ²³åå«è§": [],
+    "河北卫视HD": [],
+    "河北卫视山东": [],
+    "黑龙江卫视": [
+      {
+        "url": "http://112.27.235.94:8000/hls/48/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.7437,
+        "bytes": 131324,
+        "speed_kbps": 73.55,
+        "score": 63.61,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://124.116.183.146:9901/tsfile/live/0143_1.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.5367,
+        "bytes": 131511,
+        "speed_kbps": 50.63,
+        "score": 60.66,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://l.cztvcloud.com/channels/lantian/SXyuyao3/720p.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.268,
+        "bytes": 131372,
+        "speed_kbps": 39.26,
+        "score": 58.18,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://d.kstore.dev/download/12441/ds9.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "黑龍江視": [],
+    "é»é¾æ±è§åªå": [],
+    "黑龙江卫视超清": [],
+    "é»é¾æ±å«è§": [
+      {
+        "url": "http://124.116.183.146:9901/tsfile/live/0143_1.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.5367,
+        "bytes": 131511,
+        "speed_kbps": 50.63,
+        "score": 60.66,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://61.136.172.236:9901/tsfile/live/0143_1.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 12.4891,
+        "bytes": 65975,
+        "speed_kbps": 5.16,
+        "score": 52.13,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream;charset=utf-8",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "黑龙江卫视HD": [],
+    "黑龙江卫视[1280*720]": [],
+    "é»é¾æ±å«è§é¢é": [],
+    "黑龙江视山东": [],
+    "å®æ³¢ä½å§å§æ±": [
+      {
+        "url": "http://l.cztvcloud.com/channels/lantian/SXyuyao3/720p.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.268,
+        "bytes": 131372,
+        "speed_kbps": 39.26,
+        "score": 58.18,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://d.kstore.dev/download/12441/ds9.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "ä½å§å§æ±": [
+      {
+        "url": "http://l.cztvcloud.com/channels/lantian/SXyuyao3/720p.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.268,
+        "bytes": 131372,
+        "speed_kbps": 39.26,
+        "score": 58.18,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://d.kstore.dev/download/12441/ds9.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "é»é¾æ±è§": [],
+    "河南卫视": [
+      {
+        "url": "https://t.freetv.fun/live/he-nan-wei-shi-13.php",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.6575,
+        "bytes": 133845,
+        "speed_kbps": 198.8,
+        "score": 70.0,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://1.94.31.214/php/hntv.php?id=hnws",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.6611,
+        "bytes": 132003,
+        "speed_kbps": 77.61,
+        "score": 63.96,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://112.27.235.94:8000/hls/37/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.9604,
+        "bytes": 131324,
+        "speed_kbps": 43.32,
+        "score": 59.2,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "河南衛視": [],
+    "æ²³åå«è§åªå": [],
+    "河南卫视HD": [],
+    "æ²³åå«è§": [
+      {
+        "url": "http://61.136.172.236:9901/tsfile/live/0139_1.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 29.803,
+        "bytes": 65975,
+        "speed_kbps": 2.16,
+        "score": 52.05,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream;charset=utf-8",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "河南卫视山东": [],
+    "湖北卫视": [
+      {
+        "url": "http://112.27.235.94:8000/hls/41/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.7547,
+        "bytes": 131324,
+        "speed_kbps": 73.09,
+        "score": 63.56,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://124.116.183.146:9901/tsfile/live/0132_1.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.6348,
+        "bytes": 131511,
+        "speed_kbps": 48.74,
+        "score": 60.31,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://59.39.89.130:60901/tsfile/live/0125_12.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.5546,
+        "bytes": 131516,
+        "speed_kbps": 36.13,
+        "score": 57.24,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "æ¹åå«è§åªå": [],
+    "湖北衛視": [],
+    "æ¹åå«è§": [
+      {
+        "url": "http://124.116.183.146:9901/tsfile/live/0132_1.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.6348,
+        "bytes": 131511,
+        "speed_kbps": 48.74,
+        "score": 60.31,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      }
+    ],
+    "湖北卫视HD": [],
+    "æ¹åå«è§HD": [],
+    "湖北卫视超清": [],
+    "湖北卫视高清": [],
+    "湖北卫视咪咕": [],
+    "湖北卫视山东": [],
+    "江西衛視": [],
+    "æ±è¥¿å«è§åªå": [],
+    "æ±è¥¿å«è§": [
+      {
+        "url": "http://183.11.239.36:808/hls/44/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 6.3491,
+        "bytes": 131306,
+        "speed_kbps": 20.2,
+        "score": 52.5,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://wget.la/https://raw.githubusercontent.com/nianxinmj/nxpz/refs/heads/main/lib/live.txt"
+        ]
+      }
+    ],
+    "江西卫视HD": [],
+    "江西卫视超清": [],
+    "江西卫视山东": [],
+    "江西卫视咪咕": [],
+    "吉林卫视": [
+      {
+        "url": "http://182.150.23.74:808/hls/35/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.5069,
+        "bytes": 131323,
+        "speed_kbps": 36.57,
+        "score": 57.39,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://59.39.89.130:60901/tsfile/live/0125_19.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 4.7783,
+        "bytes": 131516,
+        "speed_kbps": 26.88,
+        "score": 53.34,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://cssbyd.imwork.net:8082/hls/41/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 6.161,
+        "bytes": 131311,
+        "speed_kbps": 20.81,
+        "score": 52.52,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "吉林衛視": [],
+    "åæå«è§åªå": [],
+    "吉林卫视HD": [],
+    "åæå«è§": [
+      {
+        "url": "http://cssbyd.imwork.net:8082/hls/41/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 6.161,
+        "bytes": 131311,
+        "speed_kbps": 20.81,
+        "score": 52.52,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "吉林卫视高清": [],
+    "吉林卫视山东": [],
+    "内蒙古卫视": [
+      {
+        "url": "https://live.264788.xyz/channel/neimengguweishi?streamid=81a015dbecf3031d7d847b7a9b059f67&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1452,
+        "bytes": 262144,
+        "speed_kbps": 1763.05,
+        "score": 91.56,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://112.30.73.119:9901/tsfile/live/1050_1.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.5021,
+        "bytes": 133760,
+        "speed_kbps": 86.96,
+        "score": 64.67,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream;charset=utf-8",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "http://112.27.235.94:8000/hls/49/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.783,
+        "bytes": 131324,
+        "speed_kbps": 71.93,
+        "score": 63.45,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "èå¤å«è§": [
+      {
+        "url": "http://183.11.239.36:808/hls/60/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 5.5842,
+        "bytes": 131306,
+        "speed_kbps": 22.96,
+        "score": 52.57,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/nianxinmj/nxpz/refs/heads/main/lib/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "浙江新闻": [
+      {
+        "url": "https://ali-m-l.cztv.com/channels/lantian/channel007/1080p.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.7634,
+        "bytes": 131371,
+        "speed_kbps": 46.43,
+        "score": 59.87,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://d.kstore.dev/download/12441/ds9.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "浙江公共新闻": [
+      {
+        "url": "https://ali-m-l.cztv.com/channels/lantian/channel007/1080p.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.7634,
+        "bytes": 131371,
+        "speed_kbps": 46.43,
+        "score": 59.87,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://d.kstore.dev/download/12441/ds9.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "æ°é»": [
+      {
+        "url": "https://ali-m-l.cztv.com/channels/lantian/channel007/1080p.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.7634,
+        "bytes": 131371,
+        "speed_kbps": 46.43,
+        "score": 59.87,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://d.kstore.dev/download/12441/ds9.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "æµæ±æ°é»": [
+      {
+        "url": "https://ali-m-l.cztv.com/channels/lantian/channel007/1080p.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.7634,
+        "bytes": 131371,
+        "speed_kbps": 46.43,
+        "score": 59.87,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://d.kstore.dev/download/12441/ds9.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "±æ°é»": [
+      {
+        "url": "https://ali-m-l.cztv.com/channels/lantian/channel007/1080p.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.7634,
+        "bytes": 131371,
+        "speed_kbps": 46.43,
+        "score": 59.87,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://d.kstore.dev/download/12441/ds9.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "内蒙古视": [],
+    "èå¤è§åªå": [],
+    "宁夏卫视": [
+      {
+        "url": "https://live.264788.xyz/channel/ningxiaweishi?streamid=da9d5125bcba51087052d52acfe0952f&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1416,
+        "bytes": 262144,
+        "speed_kbps": 1807.68,
+        "score": 91.58,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "http://cssbyd.imwork.net:8082/hls/45/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.3366,
+        "bytes": 131311,
+        "speed_kbps": 38.43,
+        "score": 57.95,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://222.169.85.8:9901/tsfile/live/0112_1.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.4304,
+        "bytes": 131511,
+        "speed_kbps": 37.44,
+        "score": 57.64,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      }
+    ],
+    "女性时尚": [],
+    "CCTVå¥³æ§æ¶å°": [],
+    "å®å¤å«è§": [
+      {
+        "url": "http://cssbyd.imwork.net:8082/hls/45/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.3366,
+        "bytes": 131311,
+        "speed_kbps": 38.43,
+        "score": 57.95,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "å®å¤å«è§åªå": [],
+    "山西卫视": [
+      {
+        "url": "https://live.264788.xyz/channel/shanxiweishi?streamid=69e002ac7467d661ff7ad0671ed43f16&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1379,
+        "bytes": 262144,
+        "speed_kbps": 1856.18,
+        "score": 91.59,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
+        ]
+      },
+      {
+        "url": "http://112.30.73.119:9901/tsfile/live/1051_1.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.4463,
+        "bytes": 133760,
+        "speed_kbps": 90.32,
+        "score": 64.92,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream;charset=utf-8",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "http://119.39.9.8:9901/tsfile/live/0118_1.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.7738,
+        "bytes": 133165,
+        "speed_kbps": 73.31,
+        "score": 63.51,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "寧夏衛視": [],
+    "山西卫视HD": [],
+    "å±±è¥¿å«è§": [
+      {
+        "url": "http://119.39.9.8:9901/tsfile/live/0118_1.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.7738,
+        "bytes": 133165,
+        "speed_kbps": 73.31,
+        "score": 63.51,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "å±±è¥¿å«è§åªå": [],
+    "山西卫视山东": [],
+    "云南卫视": [
+      {
+        "url": "https://live.264788.xyz/channel/yunnanweishi?streamid=0fb596dd22d0e6fbf7e347d81374ac88&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1393,
+        "bytes": 262144,
+        "speed_kbps": 1837.62,
+        "score": 91.58,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "http://112.27.235.94:8000/hls/40/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.7949,
+        "bytes": 131324,
+        "speed_kbps": 71.45,
+        "score": 63.4,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://59.39.89.130:60901/tsfile/live/0125_18.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.7574,
+        "bytes": 131516,
+        "speed_kbps": 34.18,
+        "score": 56.58,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "云南卫视HD": [],
+    "äºåå«è§": [
+      {
+        "url": "http://183.11.239.36:808/hls/52/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 5.3482,
+        "bytes": 131320,
+        "speed_kbps": 23.98,
+        "score": 52.6,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/nianxinmj/nxpz/refs/heads/main/lib/live.txt"
+        ]
+      }
+    ],
+    "云南卫视高清": [],
+    "云南卫视山东": [],
+    "卡酷动画": [
+      {
+        "url": "http://e1.woc.iiiya.cn:18888/rtp/239.61.5.108:1025",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.9146,
+        "bytes": 262144,
+        "speed_kbps": 133.71,
+        "score": 64.6,
+        "reason": "ok_direct",
+        "content_type": "application/octet-stream",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt"
+        ]
+      },
+      {
+        "url": "http://woc.iiiya.cn:18888/rtp/239.61.5.108:1025",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.4589,
+        "bytes": 262144,
+        "speed_kbps": 104.11,
+        "score": 62.23,
+        "reason": "ok_direct",
+        "content_type": "application/octet-stream",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt"
+        ]
+      }
+    ],
+    "卡酷少儿": [],
+    "北京卡酷少儿": [],
+    "·å°å¿": [],
+    "金鹰卡通": [
+      {
+        "url": "https://live.264788.xyz/channel/jinyingkatong?streamid=e103b40dd8fffaa99fd552f76e03ee0a&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1599,
+        "bytes": 262144,
+        "speed_kbps": 1601.03,
+        "score": 91.52,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "http://125.42.151.53:9901/tsfile/live/0107_1.m3u8?key=txiptv&playlive=1&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.8306,
+        "bytes": 131511,
+        "speed_kbps": 70.16,
+        "score": 63.26,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream;charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://woc.iiiya.cn:18888/rtp/239.61.5.107:1025",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.2605,
+        "bytes": 262144,
+        "speed_kbps": 113.25,
+        "score": 63.05,
+        "reason": "ok_direct",
+        "content_type": "application/octet-stream",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt"
+        ]
+      }
+    ],
+    "éé¹°å¡é": [],
+    "西藏卫视": [
+      {
+        "url": "https://live.264788.xyz/channel/xizangweishi?streamid=4b4e8ea919f1cfd5e43deed1d1675251&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1392,
+        "bytes": 262144,
+        "speed_kbps": 1839.31,
+        "score": 91.58,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "https://t.freetv.fun/live/xi-cang-wei-shi-1.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 5.0878,
+        "bytes": 131428,
+        "speed_kbps": 25.23,
+        "score": 52.63,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u"
+        ]
+      },
+      {
+        "url": "http://cssbyd.imwork.net:8082/hls/46/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 5.6336,
+        "bytes": 131311,
+        "speed_kbps": 22.76,
+        "score": 52.57,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "西藏衛視": [],
+    "è¥¿èå«è§åªå": [],
+    "è¥¿èå«è§": [
+      {
+        "url": "http://cssbyd.imwork.net:8082/hls/46/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 5.6336,
+        "bytes": 131311,
+        "speed_kbps": 22.76,
+        "score": 52.57,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://183.11.239.36:808/hls/64/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 10.3338,
+        "bytes": 131306,
+        "speed_kbps": 12.41,
+        "score": 52.31,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/nianxinmj/nxpz/refs/heads/main/lib/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "三沙卫视": [
+      {
+        "url": "https://live.264788.xyz/channel/sanshaweishi?streamid=40ce8e7e766a97b9b5f39c4f54ea627c&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1332,
+        "bytes": 262144,
+        "speed_kbps": 1922.13,
+        "score": 91.6,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "https://live.264788.xyz/channel/sanshaweishi?streamid=3736894cc57bd68f5caf8e9554df851f&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1383,
+        "bytes": 262144,
+        "speed_kbps": 1850.78,
+        "score": 91.59,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "https://live.264788.xyz/channel/sanshaweishi?streamid=502fb01298ebb7b4b67fe7b53a9b2af4&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.145,
+        "bytes": 262144,
+        "speed_kbps": 1765.12,
+        "score": 91.56,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      }
+    ],
+    "ä¸æ²å«è§": [],
+    "中国教育1台": [],
+    "åå·å«è§åªå": [],
+    "四川衛視": [],
+    "四川卫视HD": [],
+    "四川卫视4K": [
+      {
+        "url": "https://live.264788.xyz/channel/sichuanweishi4k?streamid=401bf692a1a8b91298f26077d53316d6&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1411,
+        "bytes": 262144,
+        "speed_kbps": 1814.72,
+        "score": 91.58,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "https://live.264788.xyz/channel/sichuanweishi4k?streamid=21be5901ee81559c827dc84e46f26452&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1535,
+        "bytes": 262144,
+        "speed_kbps": 1667.49,
+        "score": 91.54,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://111.221.137.234:44330/tsfile/live/0137_2.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 8.5305,
+        "bytes": 131905,
+        "speed_kbps": 15.1,
+        "score": 52.38,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      }
+    ],
+    "åå·å«è§": [],
+    "四川卫视山东": [],
+    "兵团卫视": [
+      {
+        "url": "https://live.264788.xyz/channel/bingtuanweishi?streamid=04a46b6d0b39840c589c19b0ee5cd5b6&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1354,
+        "bytes": 262144,
+        "speed_kbps": 1890.82,
+        "score": 91.59,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "http://112.30.73.119:9901/tsfile/live/1061_1.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.4824,
+        "bytes": 133760,
+        "speed_kbps": 88.12,
+        "score": 64.76,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream;charset=utf-8",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "http://183.11.239.36:808/hls/7/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 5.3956,
+        "bytes": 131306,
+        "speed_kbps": 23.77,
+        "score": 52.59,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/nianxinmj/nxpz/refs/heads/main/lib/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "åå·å«è§é«ç ": [],
+    "兵團衛視": [],
+    "µå¢å«è§": [
+      {
+        "url": "http://183.11.239.36:808/hls/7/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 5.3956,
+        "bytes": 131306,
+        "speed_kbps": 23.77,
+        "score": 52.59,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/nianxinmj/nxpz/refs/heads/main/lib/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://218.13.170.98:9901/tsfile/live/0115_1.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 10.0901,
+        "bytes": 131511,
+        "speed_kbps": 12.73,
+        "score": 52.32,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "青海卫视": [
+      {
+        "url": "http://120.76.248.139/live/bfgd/4200000111.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.0913,
+        "bytes": 131952,
+        "speed_kbps": 61.62,
+        "score": 62.27,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream",
+        "sources": [
+          "http://210.245.166.84:1299/live/live.txt",
+          "http://210.245.166.84:1299/live/live1.txt",
+          "http://xhztv.top/new.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      }
+    ],
+    "青海衛視": [],
+    "éæµ·å«è§": [
+      {
+        "url": "http://120.76.248.139/live/bfgd/4200000111.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.0913,
+        "bytes": 131952,
+        "speed_kbps": 61.62,
+        "score": 62.27,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream",
+        "sources": [
+          "http://210.245.166.84:1299/live/live.txt",
+          "http://210.245.166.84:1299/live/live1.txt",
+          "http://xhztv.top/new.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      }
+    ],
+    "éæµ·å«è§åªå": [],
+    "éæµ·å«è§é«ç ": [],
+    "山东教育": [
+      {
+        "url": "https://test1.live.sdetv.com.cn/live/dianshizhibo/playlist.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.2226,
+        "bytes": 131283,
+        "speed_kbps": 39.78,
+        "score": 58.33,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://183.11.239.36:808/hls/72/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 5.3683,
+        "bytes": 131306,
+        "speed_kbps": 23.89,
+        "score": 52.6,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/nianxinmj/nxpz/refs/heads/main/lib/live.txt"
+        ]
+      }
+    ],
+    "å±±ä¸æè²": [
+      {
+        "url": "https://test1.live.sdetv.com.cn/live/dianshizhibo/playlist.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.2226,
+        "bytes": 131283,
+        "speed_kbps": 39.78,
+        "score": 58.33,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "香港卫视": [
+      {
+        "url": "https://stream1.freetv.fun/ae7eaf28d8610cdc1651ef6a1f7dbb24b49c5a87627d0d881330afaea37a1616.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.9463,
+        "bytes": 132054,
+        "speed_kbps": 136.27,
+        "score": 67.57,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://webcast.hkstv.tv/livestream/mutfysrq/playlist.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.7557,
+        "bytes": 131620,
+        "speed_kbps": 46.64,
+        "score": 59.9,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt"
+        ]
+      },
+      {
+        "url": "https://hkstv.tv/api/m3u8-proxy?url=http%3A%2F%2Fwebcast.hkstv.tv%2Flivestream%2Fmutfysrq%2Fplaylist.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.7821,
+        "bytes": 131628,
+        "speed_kbps": 33.99,
+        "score": 56.5,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u"
+        ]
+      }
+    ],
+    "香港卫视频道": [
+      {
+        "url": "http://webcast.hkstv.tv/livestream/mutfysrq/playlist.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.7557,
+        "bytes": 131620,
+        "speed_kbps": 46.64,
+        "score": 59.9,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt"
+        ]
+      }
+    ],
+    "山东卫视": [
+      {
+        "url": "https://live.264788.xyz/channel/shandongweishi?streamid=17734718ddd5e6904640c72df1fe5fa8&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.6496,
+        "bytes": 262144,
+        "speed_kbps": 394.1,
+        "score": 74.9,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "http://101.66.194.121:9901/tsfile/live/0131_1.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.1259,
+        "bytes": 134006,
+        "speed_kbps": 41.87,
+        "score": 58.67,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://101.66.194.129:9901/tsfile/live/0131_1.m3u8?key=txiptv&playlive=0&authid=0",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.2864,
+        "bytes": 134006,
+        "speed_kbps": 39.82,
+        "score": 58.14,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream; charset=utf-8",
+        "sources": [
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      }
+    ],
+    "山東衛視": [],
+    "å±±ä¸å«è§åªå": [],
+    "山东卫视HD": [],
+    "å±±ä¸å«è§HD": [],
+    "å±±ä¸å«è§": [
+      {
+        "url": "http://182.150.23.74:808/hls/23/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 4.4693,
+        "bytes": 131322,
+        "speed_kbps": 28.69,
+        "score": 54.31,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://61.136.172.236:9901/tsfile/live/0131_1.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 14.0655,
+        "bytes": 65975,
+        "speed_kbps": 4.58,
+        "score": 52.11,
+        "reason": "ok_m3u8",
+        "content_type": "application/octet-stream;charset=utf-8",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "山东卫视超清": [],
+    "å±±ä¸å«è§é«ç ": [],
+    "陕西卫视": [
+      {
+        "url": "https://live.264788.xyz/channel/shaanxiweishi?streamid=dcafcf65d544d8a7b606c454d3f8ef47&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1343,
+        "bytes": 262144,
+        "speed_kbps": 1906.21,
+        "score": 91.6,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "http://112.27.235.94:8000/hls/43/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.809,
+        "bytes": 131324,
+        "speed_kbps": 70.89,
+        "score": 63.35,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://183.11.239.36:808/hls/58/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.8914,
+        "bytes": 131306,
+        "speed_kbps": 32.95,
+        "score": 56.15,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/nianxinmj/nxpz/refs/heads/main/lib/live.txt"
+        ]
+      }
+    ],
+    "陕西卫视HD": [],
+    "éè¥¿å«è§HD": [],
+    "éè¥¿å«è§": [],
+    "éè¥¿å«è§åªå": [],
+    "陕西卫视山东": [],
+    "陕西卫视咪咕": [],
+    "陝西衛視": [],
+    "內蒙古視": [],
+    "北京纪实": [],
+    "åäº¬çºªå®": [],
+    "北京紀實": [],
+    "动漫秀场": [
+      {
+        "url": "https://live.264788.xyz/channel/dongmanxiuchang?streamid=27aaba95be137dfaffb73052f4ced277&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1548,
+        "bytes": 262144,
+        "speed_kbps": 1654.27,
+        "score": 91.54,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "https://stream1.freetv.fun/dong-man-xiu-chang-9.ctv",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.7413,
+        "bytes": 133845,
+        "speed_kbps": 176.31,
+        "score": 69.18,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "https://live.264788.xyz/channel/dongmanxiuchang?streamid=03e61bd70c969d8c285a59c0b6dbab87&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1548,
+        "bytes": 262144,
+        "speed_kbps": 1654.22,
+        "score": 91.54,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      }
+    ],
+    "都市剧场": [
+      {
+        "url": "https://live.264788.xyz/channel/dushijuchang?streamid=aa27adea6b26826f34c83402fb0465ca&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1531,
+        "bytes": 262144,
+        "speed_kbps": 1672.26,
+        "score": 91.54,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "https://epg.pw/stream/3ebdb0468d20c9605d2d4e762eb9df466a987323499cc64a71f30e6f020ba7ef.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.174,
+        "bytes": 132054,
+        "speed_kbps": 109.85,
+        "score": 66.22,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://gh-proxy.com/https://raw.githubusercontent.com/hanhan8127/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "https://satellitepull.cnr.cn/live/wxcqxwgb/playlist.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.7319,
+        "bytes": 86689,
+        "speed_kbps": 22.68,
+        "score": 56.37,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      }
+    ],
+    "é½å¸å§åº": [
+      {
+        "url": "https://satellitepull.cnr.cn/live/wxcqxwgb/playlist.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.7319,
+        "bytes": 86689,
+        "speed_kbps": 22.68,
+        "score": 56.37,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      }
+    ],
+    "法治天地": [
+      {
+        "url": "https://live.264788.xyz/channel/fazhitiandi?streamid=0039922a529780d5b2709e5ccd146683&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1532,
+        "bytes": 262144,
+        "speed_kbps": 1671.16,
+        "score": 91.54,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "https://live.264788.xyz/channel/fazhitiandi?streamid=fe165cb56510151228c7f1f898f9cc2d&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1575,
+        "bytes": 262144,
+        "speed_kbps": 1625.29,
+        "score": 91.53,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "https://live.264788.xyz/channel/fazhitiandi?streamid=f97ae69ae237e5fed46fc31c7f75ac14&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1679,
+        "bytes": 262144,
+        "speed_kbps": 1524.41,
+        "score": 91.5,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      }
+    ],
+    "甘肃卫视HD": [],
+    "甘肃卫视高清": [],
+    "çèå«è§åªå": [],
+    "çèå«è§": [
+      {
+        "url": "http://183.11.239.36:808/hls/119/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 4.6857,
+        "bytes": 131306,
+        "speed_kbps": 27.37,
+        "score": 53.63,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/nianxinmj/nxpz/refs/heads/main/lib/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://cssbyd.imwork.net:8082/hls/48/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 9.3947,
+        "bytes": 131311,
+        "speed_kbps": 13.65,
+        "score": 52.34,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt",
+          "https://wget.la/https://raw.githubusercontent.com/yoursmile66/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "甘肃卫视山东": [],
+    "甘肅衛視": [],
+    "高尔夫网球": [
+      {
+        "url": "http://baota.guangyuan.site:8188/udp/239.253.43.12:5146",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.8354,
+        "bytes": 262144,
+        "speed_kbps": 90.29,
+        "score": 60.75,
+        "reason": "ok_direct",
+        "content_type": "application/octet-stream",
+        "sources": [
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt"
+        ]
+      }
+    ],
+    "欢笑剧场": [
+      {
+        "url": "https://epg.pw/stream/c26de373680830b38e7b3f0da2f920353f298e3369addfe68b8e4a2e3811a12b.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.5062,
+        "bytes": 131275,
+        "speed_kbps": 253.27,
+        "score": 71.81,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://gh-proxy.com/https://raw.githubusercontent.com/hanhan8127/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "https://epg.pw/stream/631786a4e9509776045a3b475c48a97e1c9a69b08e45e07227e3c5d61a32b515.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.2387,
+        "bytes": 132054,
+        "speed_kbps": 104.11,
+        "score": 65.89,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://gh-proxy.com/https://raw.githubusercontent.com/hanhan8127/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "欢笑剧场HD": [],
+    "æ¬¢ç¬å§åº": [],
+    "家庭理财": [
+      {
+        "url": "https://live.264788.xyz/channel/jiatinglicai?streamid=d75327b38d0feaa9d36963bae802195d&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1309,
+        "bytes": 262144,
+        "speed_kbps": 1956.26,
+        "score": 91.61,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "https://live.264788.xyz/channel/jiatinglicai?streamid=f808a1a79d27c5329fd98f4bdc93c6d0&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1917,
+        "bytes": 262144,
+        "speed_kbps": 1335.4,
+        "score": 91.42,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      }
+    ],
+    "金色学堂": [
+      {
+        "url": "https://live.264788.xyz/channel/jinsexuetang?streamid=cb091d25c0de55e14e3e620f52da7c6d&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1531,
+        "bytes": 262144,
+        "speed_kbps": 1672.42,
+        "score": 91.54,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "https://epg.pw/stream/303d79304fb4c6e23c320315de037e71f67a6ee8866d45e994b896d07eede2bb.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.4557,
+        "bytes": 131270,
+        "speed_kbps": 281.29,
+        "score": 72.67,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://gh-proxy.com/https://raw.githubusercontent.com/hanhan8127/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "https://live.264788.xyz/channel/jinsexuetang?streamid=9eafd5f816b2df2d9ec2b69bcfb152f5&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1531,
+        "bytes": 262144,
+        "speed_kbps": 1672.18,
+        "score": 91.54,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      }
+    ],
+    "极速汽车": [],
+    "欢笑剧场咪咕": [],
+    "金鹰纪实": [
+      {
+        "url": "https://live.264788.xyz/channel/jinyingjishi?streamid=bcfd639f6519faa0373873f93c140821&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1401,
+        "bytes": 262144,
+        "speed_kbps": 1827.89,
+        "score": 91.58,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "https://stream1.freetv.fun/jin-ying-ji-shi-22.ctv",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.7559,
+        "bytes": 133845,
+        "speed_kbps": 172.91,
+        "score": 69.05,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      },
+      {
+        "url": "https://epg.pw/stream/bff1174f45465dde57e23d7f6a931dd08a6673961ffda6a7590b07e46e2afb7a.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.1524,
+        "bytes": 132054,
+        "speed_kbps": 111.91,
+        "score": 66.34,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://gh-proxy.com/https://raw.githubusercontent.com/hanhan8127/TVBox/main/live.txt"
+        ]
+      }
+    ],
+    "éé¹°çºªå®": [],
+    "快乐垂钓": [
+      {
+        "url": "https://live.264788.xyz/channel/kuailechuidiao?streamid=ee769acd8c2e8a0e474b1f3e8a1c0ca8&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk",
+        "ok": true,
+        "blocked": false,
+        "latency": 0.1328,
+        "bytes": 262144,
+        "speed_kbps": 1928.18,
+        "score": 91.6,
+        "reason": "ok_direct",
+        "content_type": "video/mp4",
+        "sources": [
+          "https://wget.la/https://github.com/fafa002/yf2025/blob/main/yiyifafa.txt"
+        ]
+      },
+      {
+        "url": "https://epg.pw/stream/f985e0b6d1331e8a6ebe2cd52fc775e56778a8c59df71272881179c511e256cb.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.0499,
+        "bytes": 132054,
+        "speed_kbps": 122.83,
+        "score": 66.92,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://gh-proxy.com/https://raw.githubusercontent.com/hanhan8127/TVBox/main/live.txt"
+        ]
+      },
+      {
+        "url": "http://drive.mxmy.net:8888/udp/239.3.1.164:8001",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.2584,
+        "bytes": 76328,
+        "speed_kbps": 59.23,
+        "score": 64.71,
+        "reason": "ok_direct",
+        "content_type": "application/octet-stream",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      }
+    ],
+    "å¿«ä¹åé": [
+      {
+        "url": "http://drive.mxmy.net:8888/udp/239.3.1.164:8001",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.2584,
+        "bytes": 76328,
+        "speed_kbps": 59.23,
+        "score": 64.71,
+        "reason": "ok_direct",
+        "content_type": "application/octet-stream",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt"
+        ]
+      }
+    ],
+    "梨园": [
+      {
+        "url": "https://dxtx.hntv.tv/live/lypd.m3u8?txSecret=10c771842a0be59e8b575d765173ec96&txTime=7B923E0A&wsSecret=975c2c42fbaf3474e5b5da406653f22d&wsTime=1772510349",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.5768,
+        "bytes": 131359,
+        "speed_kbps": 49.78,
+        "score": 60.51,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u"
+        ]
+      },
+      {
+        "url": "https://dxtx.hntv.tv/live/lypd.m3u8?txSecret=10c771842a0be59e8b575d765173ec96&txTime=7B923E0A&wsSecret=41543190cdf375f1c73207222bb96542&wsTime=1769313549",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.0041,
+        "bytes": 131359,
+        "speed_kbps": 42.7,
+        "score": 59.06,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
+        ]
+      }
+    ],
+    "æ¢¨å­": [
+      {
+        "url": "https://dxtx.hntv.tv/live/lypd.m3u8?txSecret=10c771842a0be59e8b575d765173ec96&txTime=7B923E0A&wsSecret=41543190cdf375f1c73207222bb96542&wsTime=1769313549",
+        "ok": true,
+        "blocked": false,
+        "latency": 3.0041,
+        "bytes": 131359,
+        "speed_kbps": 42.7,
+        "score": 59.06,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
+        ]
+      }
+    ],
+    "辽宁都市": [
+      {
+        "url": "https://stream1.freetv.fun/liao-zhu-du-shi-5.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.0903,
+        "bytes": 133845,
+        "speed_kbps": 119.89,
+        "score": 66.73,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
+        ]
+      },
+      {
+        "url": "http://dassby.qqff.top:99/live/辽宁都市/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.0001,
+        "bytes": 131228,
+        "speed_kbps": 64.07,
+        "score": 62.6,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u"
+        ]
+      },
+      {
+        "url": "https://ls.qingting.fm/live/1099/64k.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.9983,
+        "bytes": 71469,
+        "speed_kbps": 23.28,
+        "score": 58.59,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
+        ]
+      }
+    ],
+    "è¾½å®é½å¸": [
+      {
+        "url": "https://ls.qingting.fm/live/1099/64k.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.9983,
+        "bytes": 71469,
+        "speed_kbps": 23.28,
+        "score": 58.59,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "http://xhztv.top/new.txt",
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u",
+          "https://live.zbds.top/tv/iptv4.txt",
+          "https://wget.la/https://raw.githubusercontent.com/807080747/zv/refs/heads/main/suale.txt",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
+        ]
+      }
+    ],
+    "辽宁经济": [
+      {
+        "url": "https://stream1.freetv.fun/liao-zhu-jing-ji-2.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 1.0444,
+        "bytes": 133845,
+        "speed_kbps": 125.15,
+        "score": 67.0,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://cdn.jsdelivr.net/gh/Guovin/iptv-api@gd/output/result.m3u",
+          "https://wget.la/https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
+        ]
+      },
+      {
+        "url": "http://dassby.qqff.top:99/live/辽宁经济/index.m3u8",
+        "ok": true,
+        "blocked": false,
+        "latency": 2.5121,
+        "bytes": 131230,
+        "speed_kbps": 51.02,
+        "score": 60.74,
+        "reason": "ok_m3u8",
+        "content_type": "video/mp2t",
+        "sources": [
+          "https://fastgit.cc/https://raw.githubusercontent.com/iTCoffe/Collect-iTV/main/Internet_iTV.m3u"
+        ]
+      }
+    ],
+    "辽宁公共": [],
+    "è¾½å®ç»æµ": []
+  }
+}
