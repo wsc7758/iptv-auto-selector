@@ -33,6 +33,8 @@ jobs:
 
       - name: Run IPTV selector
         env:
+          # 关键：禁用 Python 输出缓冲，确保 GitHub Actions 实时显示日志
+          PYTHONUNBUFFERED: "1"
           # 阶段一 HTTP 测速参数
           STREAM_TEST_WORKERS: "10"
           PRETEST_MAX_PER_CHANNEL: "80"
