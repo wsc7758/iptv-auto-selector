@@ -13,7 +13,7 @@ import subprocess
 import time
 import traceback
 from collections import OrderedDict, defaultdict
-from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
+from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, as_completed, wait
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
@@ -23,6 +23,15 @@ import requests
 import urllib3
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+# GitHub Actions 里 Python print 默认缓冲，导致看不到实时输出
+# 统一用带 flush 的 print，确保日志实时刷新
+_original_print = print
+
+
+def print(*args, **kwargs):
+    kwargs.setdefault("flush", True)
+    _original_print(*args, **kwargs)
 
 # ====================== 路径 ======================
 ROOT = Path(__file__).resolve().parent
