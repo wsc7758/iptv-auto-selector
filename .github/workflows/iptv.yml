@@ -1,9 +1,10 @@
-name: IPTV Auto Selector
+name: IPTV 优选
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "15 22 * * *"
+    # 每天 UTC 13:00 = 北京时间 21:00
+    - cron: "0 13 * * *"
 
 permissions:
   contents: write
@@ -11,41 +12,59 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 55
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
+      - name: Install ffmpeg (ffprobe)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          ffprobe -version | head -1
+
       - name: Install dependencies
         run: pip install -r requirements.txt
 
       - name: Run IPTV selector
         env:
-          SOURCE_DOWNLOAD_WORKERS: "6"
-          STREAM_TEST_WORKERS: "8"
-          KEEP_PER_CHANNEL: "5"
-          PRETEST_MAX_PER_CHANNEL: "50"
-          MAX_TOTAL_TEST_URLS: "2500"
+          # 阶段一 HTTP 测速参数
+          STREAM_TEST_WORKERS: "10"
+          PRETEST_MAX_PER_CHANNEL: "80"
+          MAX_TOTAL_TEST_URLS: "3000"
           CONNECT_TIMEOUT: "3"
-          READ_TIMEOUT: "5"
-          SOURCE_STAGE_MAX_SECONDS: "150"
-          TEST_STAGE_MAX_SECONDS: "1500"
-          SINGLE_URL_MAX_SECONDS: "10"
-          SOURCE_MAX_BYTES: "3145728"
-          DIRECT_READ_BYTES: "262144"
-          SEGMENT_READ_BYTES: "131072"
-          MIN_VALID_BYTES: "8192"
+          READ_TIMEOUT: "6"
+          TEST_STAGE_MAX_SECONDS: "1800"
+          SINGLE_URL_MAX_SECONDS: "12"
+          DIRECT_READ_BYTES: "524288"
+          SEGMENT_READ_BYTES: "262144"
+          MIN_VALID_BYTES: "16384"
           M3U8_SEGMENT_TEST_COUNT: "1"
+          # 阶段二 ffprobe 精测参数
+          FFPROBE_ENABLED: "1"
+          FFPROBE_TOP_N: "5"
+          FFPROBE_TIMEOUT: "8"
+          # 阶段二.5 持续稳定性测试（0=关闭）
+          SUSTAINED_TEST_SECONDS: "0"
+          # 分辨率过滤：丢弃 720P 以下
+          MIN_HEIGHT: "720"
+          # 评分权重（速度优先）
+          W_AVAILABILITY: "0.25"
+          W_QUALITY: "0.20"
+          W_SPEED: "0.35"
+          W_LATENCY: "0.10"
+          W_STABILITY: "0.10"
+          # 输出
+          KEEP_PER_CHANNEL: "5"
         run: python main.py
 
       - name: Commit outputs
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Update IPTV playlist"
-          file_pattern: "output/*.m3u output/*.txt output/*.json config/history.json"
+          commit_message: "auto: update IPTV playlists"
+          file_pattern: "output/** config/history.json"
