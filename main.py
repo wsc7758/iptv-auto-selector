@@ -98,8 +98,8 @@ M3U8_AD_DISCONTINUITY_THRESHOLD = int(os.getenv("M3U8_AD_DISCONTINUITY_THRESHOLD
 CHANNEL_NAME_VERIFY_ENABLED = os.getenv("CHANNEL_NAME_VERIFY_ENABLED", "1") not in ("0", "false", "no", "")
 
 # ====================== 分辨率过滤 ======================
-# 低于此分辨率的源直接丢弃（0=不过滤）。720 = 丢弃 720P 以下
-MIN_HEIGHT = int(os.getenv("MIN_HEIGHT", "720"))
+# 低于此分辨率的源直接丢弃（0=不过滤）。1080 = 丢弃 1080P 以下
+MIN_HEIGHT = int(os.getenv("MIN_HEIGHT", "1080"))
 
 # ====================== 评分权重（速度优先） ======================
 W_AVAILABILITY = float(os.getenv("W_AVAILABILITY", "0.20"))
