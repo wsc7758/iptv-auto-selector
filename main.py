@@ -78,6 +78,21 @@ FFPROBE_TIMEOUT = int(os.getenv("FFPROBE_TIMEOUT", "8"))
 SUSTAINED_TEST_SECONDS = float(os.getenv("SUSTAINED_TEST_SECONDS", "0"))
 SUSTAINED_TEST_TOP_N = int(os.getenv("SUSTAINED_TEST_TOP_N", "3"))
 
+# ====================== 阶段三：实际播放验证（黑屏/广告检测） ======================
+# 用 ffmpeg 实际解码视频，检测黑屏、无画面、纯广告流
+PLAYBACK_VALIDATION_ENABLED = os.getenv("PLAYBACK_VALIDATION_ENABLED", "1") not in ("0", "false", "no", "")
+FFMPEG_PATH = shutil.which("ffmpeg") or ""
+# 每频道验证前 N 名候选（在 ffprobe 精测之后、输出之前执行）
+PLAYBACK_VALIDATE_TOP_N = int(os.getenv("PLAYBACK_VALIDATE_TOP_N", "5"))
+# 实际解码时长（秒），解码这几秒来检测黑屏
+PLAYBACK_TEST_SECONDS = float(os.getenv("PLAYBACK_TEST_SECONDS", "5"))
+# 黑屏判定阈值：连续黑屏超过此秒数判定为黑屏源
+PLAYBACK_BLACK_THRESHOLD = float(os.getenv("PLAYBACK_BLACK_THRESHOLD", "3"))
+# 单条播放验证超时（秒）
+PLAYBACK_TIMEOUT = int(os.getenv("PLAYBACK_TIMEOUT", "15"))
+# m3u8 广告标记阈值：discontinuity 标记超过此数判定为广告插播源
+M3U8_AD_DISCONTINUITY_THRESHOLD = int(os.getenv("M3U8_AD_DISCONTINUITY_THRESHOLD", "3"))
+
 # ====================== 分辨率过滤 ======================
 # 低于此分辨率的源直接丢弃（0=不过滤）。720 = 丢弃 720P 以下
 MIN_HEIGHT = int(os.getenv("MIN_HEIGHT", "720"))
@@ -570,6 +585,9 @@ def test_m3u8(url: str) -> dict:
         "m3u8_width": 0,
         "m3u8_height": 0,
         "m3u8_codecs": "",
+        # 广告标记信息（阶段一记录，阶段三决定是否淘汰）
+        "ad_discontinuity_count": 0,
+        "is_ad_heavy": False,
     }
 
     playlist_ok, text, content_type, playlist_bytes, conn_t, dl_t = fetch_text_limited(url)
@@ -581,6 +599,11 @@ def test_m3u8(url: str) -> dict:
     if not playlist_ok or "#EXTM3U" not in text:
         result["reason"] = "invalid_playlist"
         return result
+
+    # 检测 m3u8 广告插入标记（#EXT-X-DISCONTINUITY / #EXT-X-DATERANGE）
+    ad_info = detect_ad_markers(text)
+    result["ad_discontinuity_count"] = ad_info["total_ad_markers"]
+    result["is_ad_heavy"] = ad_info["is_ad_heavy"]
 
     # 解析 master playlist 变体流质量信息
     variants = parse_m3u8_variants(url, text)
@@ -632,6 +655,246 @@ def test_m3u8(url: str) -> dict:
     result["ok"] = segment_success > 0
     result["reason"] = "ok_m3u8" if result["ok"] else "segment_failed"
     return result
+
+
+# ====================== 阶段三：实际播放验证（黑屏/广告检测） ======================
+def detect_ad_markers(m3u8_text: str) -> dict:
+    """
+    分析 m3u8 playlist 文本，检测广告插入标记。
+    #EXT-X-DISCONTINUITY 是广告/节目切换点，过多说明是插播广告的源。
+    #EXT-X-DATERANGE 也常被用于标记广告时段。
+    """
+    discontinuity_count = m3u8_text.upper().count("#EXT-X-DISCONTINUITY")
+    daterange_count = m3u8_text.upper().count("#EXT-X-DATERANGE")
+    total_ad_markers = discontinuity_count + daterange_count
+
+    is_ad_heavy = total_ad_markers >= M3U8_AD_DISCONTINUITY_THRESHOLD
+
+    return {
+        "discontinuity_count": discontinuity_count,
+        "daterange_count": daterange_count,
+        "total_ad_markers": total_ad_markers,
+        "is_ad_heavy": is_ad_heavy,
+    }
+
+
+def ffmpeg_playback_validation(url: str) -> dict:
+    """
+    用 ffmpeg 实际解码视频流，检测黑屏和无有效画面。
+    核心原理：ffmpeg 的 blackdetect 滤镜会检测连续黑屏帧。
+    如果连续黑屏超过 PLAYBACK_BLACK_THRESHOLD 秒，判定为黑屏源。
+
+    返回:
+    {
+        valid: 是否通过验证（True = 可正常播放，有画面），
+        is_black_screen: 是否黑屏，
+        black_duration: 最长连续黑屏秒数，
+        has_video: 是否检测到视频流,
+        has_audio: 是否检测到音频流,
+        decode_ok: ffmpeg 是否成功解码,
+        reason: 失败原因（空字符串表示通过）,
+    }
+    """
+    default_result = {
+        "valid": False,
+        "is_black_screen": False,
+        "black_duration": 0.0,
+        "has_video": False,
+        "has_audio": False,
+        "decode_ok": False,
+        "reason": "ffmpeg_not_available",
+    }
+
+    if not FFMPEG_PATH:
+        default_result["reason"] = ""
+        default_result["valid"] = True  # ffmpeg 不可用时跳过验证，不阻断
+        default_result["decode_ok"] = True
+        return default_result
+
+    # 构造 ffmpeg 命令：
+    # -t: 只解码前 N 秒
+    # -vf blackdetect: 黑屏检测滤镜，d=1 表示检测至少 1 秒的连续黑屏
+    # pix_th=0.10: 像素亮度阈值，低于 10% 视为黑
+    # -an: 不解码音频，加速
+    # -f null -: 不输出文件，只做检测
+    cmd = [
+        FFMPEG_PATH,
+        "-v", "info",
+        "-rw_timeout", str(PLAYBACK_TIMEOUT * 1000000),
+        "-i", url,
+        "-t", str(int(PLAYBACK_TEST_SECONDS)),
+        "-vf", f"blackdetect=d=1:pix_th=0.10",
+        "-an",
+        "-f", "null",
+        "-",
+    ]
+
+    try:
+        proc = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            timeout=PLAYBACK_TIMEOUT + 5,
+        )
+
+        stderr = proc.stderr or ""
+        stdout = proc.stdout or ""
+        combined = stderr + stdout
+
+        # 解析 blackdetect 输出
+        # 格式: [blackdetect @ 0x...] black_start:0.0 black_end:5.0 black_duration:5.0
+        black_duration = 0.0
+        for line in combined.splitlines():
+            if "black_duration" in line:
+                match = re.search(r"black_duration:([\d.]+)", line)
+                if match:
+                    dur = float(match.group(1))
+                    if dur > black_duration:
+                        black_duration = dur
+
+        # 检测是否有视频流和音频流
+        has_video = "Video:" in combined and "Stream #" in combined
+        has_audio = "Audio:" in combined and "Stream #" in combined
+
+        # ffmpeg 即使 blackdetect 检测到黑屏，returncode 也可能是 0
+        # 所以判断 decode_ok 不能只看 returncode
+        decode_ok = "blackdetect" in combined or has_video or proc.returncode == 0
+
+        is_black_screen = black_duration >= PLAYBACK_BLACK_THRESHOLD
+
+        # 综合判断
+        reason = ""
+        valid = True
+
+        if not decode_ok:
+            reason = "decode_failed"
+            valid = False
+        elif is_black_screen:
+            reason = f"black_screen_{black_duration:.1f}s"
+            valid = False
+        elif not has_video:
+            reason = "no_video_stream"
+            valid = False
+
+        return {
+            "valid": valid,
+            "is_black_screen": is_black_screen,
+            "black_duration": round(black_duration, 2),
+            "has_video": has_video,
+            "has_audio": has_audio,
+            "decode_ok": decode_ok,
+            "reason": reason,
+        }
+
+    except subprocess.TimeoutExpired:
+        return {
+            "valid": False,
+            "is_black_screen": False,
+            "black_duration": 0.0,
+            "has_video": False,
+            "has_audio": False,
+            "decode_ok": False,
+            "reason": "playback_timeout",
+        }
+    except Exception as exc:
+        return {
+            "valid": False,
+            "is_black_screen": False,
+            "black_duration": 0.0,
+            "has_video": False,
+            "has_audio": False,
+            "decode_ok": False,
+            "reason": f"playback_error:{str(exc)[:60]}",
+        }
+
+
+def validate_playback_top_candidates(
+    channel_results: Dict[str, List[dict]],
+    top_n: int,
+) -> None:
+    """
+    阶段三：对每频道前 top_n 名候选做实际播放验证。
+    直接修改 result dict，黑屏/无画面/广告源标记为 ok=False。
+    """
+    if not PLAYBACK_VALIDATION_ENABLED or not FFMPEG_PATH:
+        print("【阶段三】ffmpeg 未安装或播放验证未启用，跳过")
+        return
+
+    all_candidates = []
+    for channel, results in channel_results.items():
+        valid = [r for r in results if r["ok"]]
+        valid.sort(key=lambda r: (-r["score"], -r.get("speed_kbps", 0)))
+        for item in valid[:top_n]:
+            all_candidates.append((channel, item))
+
+    if not all_candidates:
+        print("【阶段三】无候选需要播放验证")
+        return
+
+    print(
+        f"【阶段三】实际播放验证 {len(all_candidates)} 条候选"
+        f"（每频道前 {top_n} 名，解码 {int(PLAYBACK_TEST_SECONDS)} 秒检测黑屏/广告）"
+    )
+
+    black_screen_count = 0
+    no_video_count = 0
+    decode_fail_count = 0
+    ad_count = 0
+    validated = 0
+    passed = 0
+
+    with ThreadPoolExecutor(max_workers=min(6, STREAM_TEST_WORKERS)) as pool:
+        futures = {
+            pool.submit(ffmpeg_playback_validation, item["url"]): (ch, item)
+            for ch, item in all_candidates
+        }
+        for future in as_completed(futures):
+            ch, item = futures[future]
+            try:
+                result = future.result()
+            except Exception:
+                result = {
+                    "valid": False,
+                    "is_black_screen": False,
+                    "reason": "validation_exception",
+                    "black_duration": 0.0,
+                    "has_video": False,
+                    "has_audio": False,
+                }
+
+            validated += 1
+            if validated % 20 == 0:
+                print(f"【阶段三进度】{validated}/{len(all_candidates)}")
+
+            # 记录播放验证结果到 item
+            item["playback_valid"] = result["valid"]
+            item["playback_black_duration"] = result.get("black_duration", 0)
+            item["playback_has_video"] = result.get("has_video", False)
+            item["playback_has_audio"] = result.get("has_audio", False)
+
+            if result["valid"]:
+                passed += 1
+            else:
+                reason = result.get("reason", "unknown")
+                item["ok"] = False
+                item["reason"] = f"playback_{reason}"
+                item["score"] = 0.0
+
+                if "black_screen" in reason:
+                    black_screen_count += 1
+                elif "no_video" in reason:
+                    no_video_count += 1
+                elif "decode_failed" in reason or "timeout" in reason or "error" in reason:
+                    decode_fail_count += 1
+                else:
+                    ad_count += 1
+
+    print(
+        f"【阶段三】验证完成：通过 {passed}/{validated}"
+        f"，黑屏淘汰 {black_screen_count}"
+        f"，无视频流淘汰 {no_video_count}"
+        f"，解码失败淘汰 {decode_fail_count}"
+    )
 
 
 def test_single_url(url: str, url_keywords: List[str], history: dict) -> dict:
@@ -713,6 +976,8 @@ def test_single_url(url: str, url_keywords: List[str], history: dict) -> dict:
         "height": m3u8_h,
         "codec": "",
         "bitrate": m3u8_bw,
+        "ad_discontinuity_count": test_result.get("ad_discontinuity_count", 0),
+        "is_ad_heavy": test_result.get("is_ad_heavy", False),
     }
 
 
@@ -1236,6 +1501,11 @@ def main() -> int:
     else:
         print("【配置】ffprobe 未启用，仅使用 m3u8 元数据做清晰度判断")
 
+    if PLAYBACK_VALIDATION_ENABLED and FFMPEG_PATH:
+        print(f"【配置】播放验证已就绪: {FFMPEG_PATH}，每频道验证前 {PLAYBACK_VALIDATE_TOP_N} 名，解码 {int(PLAYBACK_TEST_SECONDS)} 秒")
+    else:
+        print("【配置】播放验证未启用（ffmpeg 未安装）")
+
     if MIN_HEIGHT > 0:
         print(f"【配置】分辨率过滤: 丢弃 {MIN_HEIGHT}P 以下源")
 
@@ -1340,6 +1610,13 @@ def main() -> int:
         print(f"【阶段二.5】持续稳定性测试 {SUSTAINED_TEST_SECONDS:.0f} 秒（每频道前 {SUSTAINED_TEST_TOP_N} 名）")
         stability_test_top_candidates(channel_results, SUSTAINED_TEST_TOP_N, SUSTAINED_TEST_SECONDS)
 
+    # ---------- 阶段三：实际播放验证（黑屏/广告检测） ----------
+    if PLAYBACK_VALIDATION_ENABLED and FFMPEG_PATH and ok_count > 0:
+        print(f"【阶段三】实际播放验证（每频道前 {PLAYBACK_VALIDATE_TOP_N} 名，解码 {int(PLAYBACK_TEST_SECONDS)} 秒检测黑屏/广告）")
+        validate_playback_top_candidates(channel_results, PLAYBACK_VALIDATE_TOP_N)
+    else:
+        print("【阶段三】跳过实际播放验证（ffmpeg 未安装或未启用）")
+
     # ---------- 输出 ----------
     m3u_text, tv_text, output_summary = build_outputs(channel_results, template_order, template_info)
     atomic_write_text(OUTPUT_M3U, m3u_text)
@@ -1362,6 +1639,12 @@ def main() -> int:
             else:
                 height_dist["other"] += 1
 
+    # 统计阶段三播放验证淘汰数
+    black_screen_dropped = sum(1 for r in all_results if "black_screen" in r.get("reason", ""))
+    no_video_dropped = sum(1 for r in all_results if "no_video" in r.get("reason", ""))
+    playback_fail_dropped = sum(1 for r in all_results if "playback" in r.get("reason", ""))
+    ad_heavy_count = sum(1 for r in all_results if r.get("is_ad_heavy", False))
+
     # ffprobe 后重新统计 ok 数
     final_ok_count = sum(1 for r in all_results if r["ok"])
     ffprobe_count = sum(1 for r in all_results if r.get("quality_source") == "ffprobe")
@@ -1377,6 +1660,10 @@ def main() -> int:
         "stage_timeout_url_count": timeout_count,
         "valid_url_count": final_ok_count,
         "low_resolution_dropped": low_res_dropped,
+        "black_screen_dropped": black_screen_dropped,
+        "no_video_dropped": no_video_dropped,
+        "playback_fail_dropped": playback_fail_dropped,
+        "ad_heavy_count": ad_heavy_count,
         "ffprobe_tested_count": ffprobe_count,
         "m3u8_meta_quality_count": m3u8_meta_count,
         "height_distribution": dict(height_dist),
@@ -1399,6 +1686,12 @@ def main() -> int:
             "ffprobe_top_n": FFPROBE_TOP_N,
             "ffprobe_timeout": FFPROBE_TIMEOUT,
             "sustained_test_seconds": SUSTAINED_TEST_SECONDS,
+            "playback_validation_enabled": PLAYBACK_VALIDATION_ENABLED and bool(FFMPEG_PATH),
+            "playback_validate_top_n": PLAYBACK_VALIDATE_TOP_N,
+            "playback_test_seconds": PLAYBACK_TEST_SECONDS,
+            "playback_black_threshold": PLAYBACK_BLACK_THRESHOLD,
+            "playback_timeout": PLAYBACK_TIMEOUT,
+            "m3u8_ad_discontinuity_threshold": M3U8_AD_DISCONTINUITY_THRESHOLD,
             "weights": {
                 "availability": W_AVAILABILITY,
                 "quality": W_QUALITY,
@@ -1418,6 +1711,14 @@ def main() -> int:
     print(f"有效链接：{final_ok_count}/{len(unique_urls)}")
     if low_res_dropped > 0:
         print(f"低分辨率淘汰：{low_res_dropped} 条（<{MIN_HEIGHT}P）")
+    if black_screen_dropped > 0:
+        print(f"黑屏淘汰：{black_screen_dropped} 条")
+    if no_video_dropped > 0:
+        print(f"无视频流淘汰：{no_video_dropped} 条")
+    if playback_fail_dropped > 0:
+        print(f"播放验证失败淘汰：{playback_fail_dropped} 条")
+    if ad_heavy_count > 0:
+        print(f"广告标记源：{ad_heavy_count} 条（含广告插入标记）")
     print(f"ffprobe 精测：{ffprobe_count} 条")
     print(f"清晰度分布：{dict(height_dist) if height_dist else '未检测到分辨率信息'}")
     print(f"输出频道：{output_summary['output_channels']} 个")
