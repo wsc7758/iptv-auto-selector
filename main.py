@@ -65,13 +65,13 @@ SOURCE_MAX_BYTES = int(os.getenv("SOURCE_MAX_BYTES", str(3 * 1024 * 1024)))
 DIRECT_READ_BYTES = int(os.getenv("DIRECT_READ_BYTES", str(512 * 1024)))
 SEGMENT_READ_BYTES = int(os.getenv("SEGMENT_READ_BYTES", str(256 * 1024)))
 MIN_VALID_BYTES = int(os.getenv("MIN_VALID_BYTES", str(16 * 1024)))
-M3U8_SEGMENT_TEST_COUNT = int(os.getenv("M3U8_SEGMENT_TEST_COUNT", "1"))
+M3U8_SEGMENT_TEST_COUNT = int(os.getenv("M3U8_SEGMENT_TEST_COUNT", "2"))
 
 # ====================== 质量检测参数 ======================
 # ffprobe 精测：对每频道 HTTP 测速前 N 名做 ffprobe，获取真实分辨率/码率/编码
 FFPROBE_ENABLED = os.getenv("FFPROBE_ENABLED", "1") not in ("0", "false", "no", "")
 FFPROBE_PATH = os.getenv("FFPROBE_PATH") or shutil.which("ffprobe") or ""
-FFPROBE_TOP_N = int(os.getenv("FFPROBE_TOP_N", "5"))
+FFPROBE_TOP_N = int(os.getenv("FFPROBE_TOP_N", "8"))
 FFPROBE_TIMEOUT = int(os.getenv("FFPROBE_TIMEOUT", "8"))
 
 # 持续稳定性测试：对最终候选做 N 秒持续拉流，检测是否断流（0=关闭）
@@ -83,26 +83,35 @@ SUSTAINED_TEST_TOP_N = int(os.getenv("SUSTAINED_TEST_TOP_N", "3"))
 PLAYBACK_VALIDATION_ENABLED = os.getenv("PLAYBACK_VALIDATION_ENABLED", "1") not in ("0", "false", "no", "")
 FFMPEG_PATH = os.getenv("FFMPEG_PATH") or shutil.which("ffmpeg") or ""
 # 每频道验证前 N 名候选（在 ffprobe 精测之后、输出之前执行）
-PLAYBACK_VALIDATE_TOP_N = int(os.getenv("PLAYBACK_VALIDATE_TOP_N", "5"))
-# 实际解码时长（秒），解码这几秒来检测黑屏
-PLAYBACK_TEST_SECONDS = float(os.getenv("PLAYBACK_TEST_SECONDS", "5"))
+PLAYBACK_VALIDATE_TOP_N = int(os.getenv("PLAYBACK_VALIDATE_TOP_N", "8"))
+# 实际解码时长（秒），解码这几秒来检测黑屏 + 获取实时播放速率
+PLAYBACK_TEST_SECONDS = float(os.getenv("PLAYBACK_TEST_SECONDS", "8"))
 # 黑屏判定阈值：连续黑屏超过此秒数判定为黑屏源
 PLAYBACK_BLACK_THRESHOLD = float(os.getenv("PLAYBACK_BLACK_THRESHOLD", "3"))
 # 单条播放验证超时（秒）
-PLAYBACK_TIMEOUT = int(os.getenv("PLAYBACK_TIMEOUT", "15"))
+PLAYBACK_TIMEOUT = int(os.getenv("PLAYBACK_TIMEOUT", "20"))
 # m3u8 广告标记阈值：discontinuity 标记超过此数判定为广告插播源
 M3U8_AD_DISCONTINUITY_THRESHOLD = int(os.getenv("M3U8_AD_DISCONTINUITY_THRESHOLD", "3"))
+
+# ====================== 频道名校验（解决 CCTV16 播 CCTV17 内容的问题） ======================
+# 通过 ffprobe 提取 TS 流内的 service_name，与期望频道名对比
+CHANNEL_NAME_VERIFY_ENABLED = os.getenv("CHANNEL_NAME_VERIFY_ENABLED", "1") not in ("0", "false", "no", "")
 
 # ====================== 分辨率过滤 ======================
 # 低于此分辨率的源直接丢弃（0=不过滤）。720 = 丢弃 720P 以下
 MIN_HEIGHT = int(os.getenv("MIN_HEIGHT", "720"))
 
 # ====================== 评分权重（速度优先） ======================
-W_AVAILABILITY = float(os.getenv("W_AVAILABILITY", "0.25"))
-W_QUALITY = float(os.getenv("W_QUALITY", "0.20"))
-W_SPEED = float(os.getenv("W_SPEED", "0.35"))
-W_LATENCY = float(os.getenv("W_LATENCY", "0.10"))
+W_AVAILABILITY = float(os.getenv("W_AVAILABILITY", "0.20"))
+W_QUALITY = float(os.getenv("W_QUALITY", "0.15"))
+W_SPEED = float(os.getenv("W_SPEED", "0.40"))
+W_LATENCY = float(os.getenv("W_LATENCY", "0.15"))
 W_STABILITY = float(os.getenv("W_STABILITY", "0.10"))
+
+# ====================== CDN 多样性（默认关闭，优先速度） ======================
+# 开启后：选出的链接会优先来自不同 CDN host，提高容灾能力
+# 关闭后：纯粹按速度排序，选最快的 N 条（用户要求：最快的排第一）
+CDN_DIVERSITY_ENABLED = os.getenv("CDN_DIVERSITY_ENABLED", "0") not in ("0", "false", "no", "")
 
 DEFAULT_HEADERS = {
     "User-Agent": os.getenv(
@@ -657,6 +666,169 @@ def test_m3u8(url: str) -> dict:
     return result
 
 
+# ====================== 频道名匹配校验 ======================
+def _normalize_channel_name(name: str) -> str:
+    """
+    归一化频道名，用于对比。
+    去掉空格、横线、全角横线，统一大小写，提取关键数字。
+    CCTV-1、CCTV1、CCTV－1、cctv 1 都归一化为 CCTV1
+    CCTV-16、CCTV16、CCTV－16 都归一化为 CCTV16
+    """
+    s = name.upper().strip()
+    # 去掉各种横线和空格
+    s = s.replace(" ", "").replace("-", "").replace("－", "").replace("—", "")
+    # 去掉常见后缀
+    for suffix in ("HD", "高清", "超清", "FHD", "4K", "8K", "SD", "标清"):
+        if s.endswith(suffix.upper()):
+            s = s[: -len(suffix)]
+    return s
+
+
+def _extract_channel_number(name: str) -> Optional[str]:
+    """
+    从频道名中提取频道编号。
+    CCTV-1 → "1", CCTV-16 → "16", 湖南卫视 → None
+    """
+    s = _normalize_channel_name(name)
+    # 匹配 CCTV 后面的数字
+    m = re.match(r"CCTV(\d+)", s)
+    if m:
+        return m.group(1)
+    return None
+
+
+def is_channel_mismatch(expected_name: str, actual_service_name: str) -> bool:
+    """
+    判断流内 service_name 与期望频道名是否不匹配。
+    只有在能明确提取到频道编号且编号不同时才判定不匹配。
+    对于无法提取编号的频道名（如"湖南卫视"），不做判断，返回 False。
+
+    例如：
+    expected=CCTV-16, actual=CCTV-17 → True（不匹配，淘汰）
+    expected=CCTV-1, actual=CCTV-1综合 → False（匹配）
+    expected=湖南卫视, actual=湖南卫视 → False（匹配）
+    expected=湖南卫视, actual=浙江卫视 → True（不匹配，淘汰）
+    """
+    exp_num = _extract_channel_number(expected_name)
+    act_num = _extract_channel_number(actual_service_name)
+
+    # 如果两边都能提取到 CCTV 编号
+    if exp_num and act_num:
+        return exp_num != act_num
+
+    # 如果都不是 CCTV 编号频道，做名称相似度判断
+    exp_norm = _normalize_channel_name(expected_name)
+    act_norm = _normalize_channel_name(actual_service_name)
+
+    # 完全匹配
+    if exp_norm == act_norm:
+        return False
+
+    # 一个包含另一个（处理 "CCTV1综合" vs "CCTV1" 这种情况）
+    if exp_norm in act_norm or act_norm in exp_norm:
+        return False
+
+    # 两边都至少 2 个字符且不包含关系 → 判定不匹配
+    if len(exp_norm) >= 2 and len(act_norm) >= 2:
+        return True
+
+    return False
+
+
+def extract_channel_hint_from_url(url: str) -> str:
+    """
+    从 URL 路径中提取频道名线索。
+    例: http://example.com/cctv16/playlist.m3u8 → "cctv16"
+        http://example.com/stream/cctv-1.m3u8 → "cctv-1"
+        http://example.com/hunan.ts → "hunan"
+
+    用于交叉校验：如果 URL 路径里明确写了 cctv16，但流内 service_name 是 cctv17，
+    则判定为不匹配。
+    """
+    path = urlparse(url).path.lower()
+    # 去掉文件扩展名
+    path = re.sub(r"\.(m3u8|ts|flv|mp4|json)(\?.*)?$", "", path)
+    # 按 / 分割，取最后一段（通常是频道标识）
+    parts = [p for p in path.split("/") if p]
+    if not parts:
+        return ""
+    last = parts[-1]
+    # 如果最后一段是通用词（stream, playlist, index, live, ch），往前找一个
+    generic_words = {"stream", "playlist", "index", "live", "ch", "channel", "tv", "play", "video", "media", "output", "hls"}
+    if last in generic_words and len(parts) >= 2:
+        last = parts[-2]
+    return last
+
+
+def is_url_channel_mismatch(expected_name: str, url: str) -> bool:
+    """
+    用 URL 路径中的频道线索交叉校验频道名。
+    仅在 URL 路径中能提取到明确的 CCTV 编号时才判断。
+    例: expected=CCTV-16, url=.../cctv17/... → True（不匹配）
+    """
+    url_hint = extract_channel_hint_from_url(url)
+    if not url_hint:
+        return False
+
+    exp_num = _extract_channel_number(expected_name)
+    url_num = _extract_channel_number(url_hint)
+
+    # 两边都能提取到 CCTV 编号，且编号不同 → 不匹配
+    if exp_num and url_num:
+        return exp_num != url_num
+
+    return False
+
+
+def extract_service_name_from_hls(url: str) -> str:
+    """
+    对 HLS (m3u8) 流，跟踪到实际 TS 分片并用 ffprobe 提取 service_name。
+
+    很多 IPTV m3u8 流在 playlist 层面没有 service_name，
+    但 TS 分片内部携带 DVB service_name（真实频道名）。
+
+    流程:
+    1. 下载 m3u8 playlist
+    2. 如果是 master playlist，选择最高质量变体
+    3. 获取第一个 TS 分片 URL
+    4. 用 ffprobe 探测该分片，提取 service_name
+
+    返回: service_name 字符串（可能为空）
+    """
+    if not FFPROBE_PATH:
+        return ""
+
+    try:
+        # 1. 下载 m3u8 playlist
+        ok, text, _, _, _, _ = fetch_text_limited(url, limit_bytes=128 * 1024)
+        if not ok or "#EXTM3U" not in text:
+            return ""
+
+        # 2. 如果是 master playlist，选最高质量变体
+        variants = parse_m3u8_variants(url, text)
+        if variants:
+            child_url = variants[0]["url"]
+            ok2, text2, _, _, _, _ = fetch_text_limited(child_url, limit_bytes=128 * 1024)
+            if ok2 and "#EXTM3U" in text2:
+                text = text2
+                url = child_url
+
+        # 3. 提取 TS 分片 URL
+        _, segments = extract_m3u8_links(url, text)
+        if not segments:
+            return ""
+
+        # 4. 用 ffprobe 探测第一个 TS 分片
+        seg_url = segments[0]
+        probe_data = ffprobe_url(seg_url)
+        if probe_data and probe_data.get("service_name"):
+            return probe_data["service_name"]
+
+        return ""
+    except Exception:
+        return ""
+
+
 # ====================== 阶段三：实际播放验证（黑屏/广告检测） ======================
 def detect_ad_markers(m3u8_text: str) -> dict:
     """
@@ -699,6 +871,8 @@ def ffmpeg_playback_validation(url: str) -> dict:
         "valid": False,
         "is_black_screen": False,
         "black_duration": 0.0,
+        "freeze_duration": 0.0,
+        "silence_duration": 0.0,
         "has_video": False,
         "has_audio": False,
         "decode_ok": False,
@@ -713,9 +887,10 @@ def ffmpeg_playback_validation(url: str) -> dict:
 
     # 构造 ffmpeg 命令：
     # -t: 只解码前 N 秒
-    # -vf blackdetect: 黑屏检测滤镜，d=1 表示检测至少 1 秒的连续黑屏
-    # pix_th=0.10: 像素亮度阈值，低于 10% 视为黑
-    # -an: 不解码音频，加速
+    # -vf blackdetect+freezedetect: 黑屏检测 + 冻结帧检测
+    # blackdetect: pix_th=0.10 像素亮度低于10%视为黑
+    # freezedetect: noise=0.001 噪声低于此值视为冻结帧，d=2 持续2秒以上才报
+    # 不用 -an，保留音频流用于检测是否有音频
     # -f null -: 不输出文件，只做检测
     cmd = [
         FFMPEG_PATH,
@@ -723,8 +898,8 @@ def ffmpeg_playback_validation(url: str) -> dict:
         "-rw_timeout", str(PLAYBACK_TIMEOUT * 1000000),
         "-i", url,
         "-t", str(int(PLAYBACK_TEST_SECONDS)),
-        "-vf", f"blackdetect=d=1:pix_th=0.10",
-        "-an",
+        "-vf", "blackdetect=d=1:pix_th=0.10,freezedetect=noise=0.001:d=2",
+        "-af", "silencedetect=noise=-50dB:d=3",
         "-f", "null",
         "-",
     ]
@@ -752,15 +927,68 @@ def ffmpeg_playback_validation(url: str) -> dict:
                     if dur > black_duration:
                         black_duration = dur
 
+        # 解析 freezedetect 输出
+        # 格式: [freezedetect @ 0x...] freeze_start:1.0 freeze_end:5.0 freeze_duration:4.0
+        freeze_duration = 0.0
+        for line in combined.splitlines():
+            if "freeze_duration" in line:
+                match = re.search(r"freeze_duration:([\d.]+)", line)
+                if match:
+                    dur = float(match.group(1))
+                    if dur > freeze_duration:
+                        freeze_duration = dur
+
+        # 解析 silencedetect 输出
+        # 格式: [silencedetect @ 0x...] silence_start:0.0 silence_end:5.0 silence_duration:5.0
+        silence_duration = 0.0
+        for line in combined.splitlines():
+            if "silence_duration" in line:
+                match = re.search(r"silence_duration:([\d.]+)", line)
+                if match:
+                    dur = float(match.group(1))
+                    if dur > silence_duration:
+                        silence_duration = dur
+
         # 检测是否有视频流和音频流
         has_video = "Video:" in combined and "Stream #" in combined
         has_audio = "Audio:" in combined and "Stream #" in combined
 
+        # ===== 解析 ffmpeg 实时播放速率 =====
+        # ffmpeg 输出格式: frame=  125 fps= 25 ... speed=   1x
+        # speed=1x 表示能实时播放，speed=2x 表示2倍实时（充裕），speed=0.5x 表示无法实时（会卡顿）
+        # 这是衡量"播放速度"最准确的指标，比 HTTP 下载速度更能反映实际观看体验
+        playback_fps = 0.0
+        playback_speed_ratio = 0.0
+        decoded_frames = 0
+
+        for line in combined.splitlines():
+            # 解析 fps= （实际解码帧率）
+            fps_match = re.search(r"fps=\s*([\d.]+)", line)
+            if fps_match:
+                playback_fps = max(playback_fps, float(fps_match.group(1)))
+            # 解析 frame= （已解码帧数）
+            frame_match = re.search(r"frame=\s*(\d+)", line)
+            if frame_match:
+                decoded_frames = max(decoded_frames, int(frame_match.group(1)))
+            # 解析 speed= （实时播放倍率，最后一个值最准确）
+            speed_match = re.search(r"speed=\s*([\d.]+)x", line)
+            if speed_match:
+                playback_speed_ratio = float(speed_match.group(1))
+
+        # 如果没有 speed= 信息但成功解码了帧，用 fps 推算
+        # 假设目标帧率 25fps，如果解码 fps >= 25 则 speed_ratio >= 1.0
+        if playback_speed_ratio == 0.0 and playback_fps > 0:
+            playback_speed_ratio = playback_fps / 25.0
+
         # ffmpeg 即使 blackdetect 检测到黑屏，returncode 也可能是 0
         # 所以判断 decode_ok 不能只看 returncode
-        decode_ok = "blackdetect" in combined or has_video or proc.returncode == 0
+        decode_ok = "blackdetect" in combined or "freezedetect" in combined or has_video or proc.returncode == 0
 
         is_black_screen = black_duration >= PLAYBACK_BLACK_THRESHOLD
+        # 冻结帧超过 3 秒也判定为无效（画面完全静止，通常是广告或故障）
+        is_frozen = freeze_duration >= PLAYBACK_BLACK_THRESHOLD
+        # 完全静音超过 4 秒且无视频冻结 → 可能是纯音频或故障流
+        is_silent_only = silence_duration >= 4.0 and not has_video
 
         # 综合判断
         reason = ""
@@ -772,18 +1000,37 @@ def ffmpeg_playback_validation(url: str) -> dict:
         elif is_black_screen:
             reason = f"black_screen_{black_duration:.1f}s"
             valid = False
+        elif is_frozen:
+            reason = f"frozen_frame_{freeze_duration:.1f}s"
+            valid = False
         elif not has_video:
             reason = "no_video_stream"
+            valid = False
+        elif is_silent_only:
+            reason = f"silent_no_video_{silence_duration:.1f}s"
+            valid = False
+        elif decoded_frames > 0 and decoded_frames < 5:
+            # 解码帧数过少（5秒应至少解码数十帧），可能是花屏或无效流
+            reason = f"too_few_frames_{decoded_frames}"
+            valid = False
+        elif playback_speed_ratio > 0 and playback_speed_ratio < 0.5:
+            # 实时播放速率低于 0.5x → 严重卡顿，无法正常观看
+            reason = f"too_slow_{playback_speed_ratio:.1f}x"
             valid = False
 
         return {
             "valid": valid,
             "is_black_screen": is_black_screen,
             "black_duration": round(black_duration, 2),
+            "freeze_duration": round(freeze_duration, 2),
+            "silence_duration": round(silence_duration, 2),
             "has_video": has_video,
             "has_audio": has_audio,
             "decode_ok": decode_ok,
             "reason": reason,
+            "playback_fps": round(playback_fps, 2),
+            "playback_speed_ratio": round(playback_speed_ratio, 2),
+            "decoded_frames": decoded_frames,
         }
 
     except subprocess.TimeoutExpired:
@@ -791,20 +1038,30 @@ def ffmpeg_playback_validation(url: str) -> dict:
             "valid": False,
             "is_black_screen": False,
             "black_duration": 0.0,
+            "freeze_duration": 0.0,
+            "silence_duration": 0.0,
             "has_video": False,
             "has_audio": False,
             "decode_ok": False,
             "reason": "playback_timeout",
+            "playback_fps": 0.0,
+            "playback_speed_ratio": 0.0,
+            "decoded_frames": 0,
         }
     except Exception as exc:
         return {
             "valid": False,
             "is_black_screen": False,
             "black_duration": 0.0,
+            "freeze_duration": 0.0,
+            "silence_duration": 0.0,
             "has_video": False,
             "has_audio": False,
             "decode_ok": False,
             "reason": f"playback_error:{str(exc)[:60]}",
+            "playback_fps": 0.0,
+            "playback_speed_ratio": 0.0,
+            "decoded_frames": 0,
         }
 
 
@@ -833,13 +1090,16 @@ def validate_playback_top_candidates(
 
     print(
         f"【阶段三】实际播放验证 {len(all_candidates)} 条候选"
-        f"（每频道前 {top_n} 名，解码 {int(PLAYBACK_TEST_SECONDS)} 秒检测黑屏/广告）"
+        f"（每频道前 {top_n} 名，解码 {int(PLAYBACK_TEST_SECONDS)} 秒检测黑屏/冻结帧/静音）"
     )
 
     black_screen_count = 0
+    frozen_count = 0
     no_video_count = 0
     decode_fail_count = 0
     ad_count = 0
+    slow_count = 0
+    few_frames_count = 0
     validated = 0
     passed = 0
 
@@ -858,8 +1118,13 @@ def validate_playback_top_candidates(
                     "is_black_screen": False,
                     "reason": "validation_exception",
                     "black_duration": 0.0,
+                    "freeze_duration": 0.0,
+                    "silence_duration": 0.0,
                     "has_video": False,
                     "has_audio": False,
+                    "playback_fps": 0.0,
+                    "playback_speed_ratio": 0.0,
+                    "decoded_frames": 0,
                 }
 
             validated += 1
@@ -869,11 +1134,29 @@ def validate_playback_top_candidates(
             # 记录播放验证结果到 item
             item["playback_valid"] = result["valid"]
             item["playback_black_duration"] = result.get("black_duration", 0)
+            item["playback_freeze_duration"] = result.get("freeze_duration", 0)
+            item["playback_silence_duration"] = result.get("silence_duration", 0)
             item["playback_has_video"] = result.get("has_video", False)
             item["playback_has_audio"] = result.get("has_audio", False)
+            # 关键：记录实际播放速度指标，用于最终排序
+            item["playback_fps"] = result.get("playback_fps", 0)
+            item["playback_speed_ratio"] = result.get("playback_speed_ratio", 0)
+            item["decoded_frames"] = result.get("decoded_frames", 0)
 
             if result["valid"]:
                 passed += 1
+                # 通过验证的链接，根据实时播放速率调整分数
+                # speed_ratio >= 2.0 → 加分（充裕，不卡顿）
+                # speed_ratio 1.0~2.0 → 不变（刚好实时）
+                # speed_ratio 0.5~1.0 → 降分（勉强能看，可能偶尔卡顿）
+                pb_ratio = result.get("playback_speed_ratio", 0)
+                if pb_ratio > 0:
+                    if pb_ratio >= 2.0:
+                        item["score"] = round(item["score"] * 1.15, 2)
+                    elif pb_ratio >= 1.0:
+                        item["score"] = round(item["score"] * 1.05, 2)
+                    elif pb_ratio < 1.0:
+                        item["score"] = round(item["score"] * 0.85, 2)
             else:
                 reason = result.get("reason", "unknown")
                 item["ok"] = False
@@ -882,7 +1165,13 @@ def validate_playback_top_candidates(
 
                 if "black_screen" in reason:
                     black_screen_count += 1
-                elif "no_video" in reason:
+                elif "frozen" in reason:
+                    frozen_count += 1
+                elif "too_few_frames" in reason:
+                    few_frames_count += 1
+                elif "too_slow" in reason:
+                    slow_count += 1
+                elif "no_video" in reason or "silent" in reason:
                     no_video_count += 1
                 elif "decode_failed" in reason or "timeout" in reason or "error" in reason:
                     decode_fail_count += 1
@@ -892,8 +1181,11 @@ def validate_playback_top_candidates(
     print(
         f"【阶段三】验证完成：通过 {passed}/{validated}"
         f"，黑屏淘汰 {black_screen_count}"
-        f"，无视频流淘汰 {no_video_count}"
+        f"，冻结帧淘汰 {frozen_count}"
+        f"，无视频/静音淘汰 {no_video_count}"
         f"，解码失败淘汰 {decode_fail_count}"
+        f"，帧数不足淘汰 {few_frames_count}"
+        f"，速度过慢淘汰 {slow_count}"
     )
 
 
@@ -985,7 +1277,8 @@ def test_single_url(url: str, url_keywords: List[str], history: dict) -> dict:
 def ffprobe_url(url: str) -> Optional[dict]:
     """
     用 ffprobe 获取流媒体真实参数。
-    返回: {width, height, codec, bitrate, fps, format_name} 或 None
+    返回: {width, height, codec, bitrate, fps, format_name, service_name} 或 None
+    service_name 来自 TS 流的 DVB 服务名，可用于校验频道是否匹配。
     """
     if not FFPROBE_PATH:
         return None
@@ -995,6 +1288,7 @@ def ffprobe_url(url: str) -> Optional[dict]:
         "-v", "error",
         "-show_streams",
         "-show_format",
+        "-show_programs",
         "-of", "json",
         "-rw_timeout", str(FFPROBE_TIMEOUT * 1000000),
         url,
@@ -1033,6 +1327,25 @@ def ffprobe_url(url: str) -> Optional[dict]:
 
         bitrate = int(video_stream.get("bit_rate", 0) or format_info.get("bit_rate", 0) or 0)
 
+        # 提取 service_name（TS 流的 DVB 服务名，常包含真实频道名）
+        service_name = ""
+        # 方式1: 从 programs 里提取
+        programs = data.get("programs", [])
+        for prog in programs:
+            tags = prog.get("tags", {})
+            sn = tags.get("service_name", "") or tags.get("service_name_eng", "")
+            if sn:
+                service_name = sn.strip()
+                break
+        # 方式2: 从 format tags 里提取
+        if not service_name:
+            fmt_tags = format_info.get("tags", {})
+            service_name = (
+                fmt_tags.get("service_name", "")
+                or fmt_tags.get("service_name_eng", "")
+                or fmt_tags.get("title", "")
+            ).strip()
+
         return {
             "width": int(video_stream.get("width", 0)),
             "height": int(video_stream.get("height", 0)),
@@ -1040,6 +1353,7 @@ def ffprobe_url(url: str) -> Optional[dict]:
             "bitrate": bitrate,
             "fps": fps,
             "format_name": format_info.get("format_name", ""),
+            "service_name": service_name,
         }
     except subprocess.TimeoutExpired:
         return None
@@ -1061,6 +1375,7 @@ def probe_top_candidates(
 
     total_probe = 0
     probe_success = 0
+    channel_mismatch_count = 0
     all_candidates = []
 
     for channel, results in channel_results.items():
@@ -1101,6 +1416,40 @@ def probe_top_candidates(
                 item["format_name"] = probe_data.get("format_name", "")
                 item["quality_source"] = "ffprobe"
 
+                # ===== 频道名校验（增强版） =====
+                svc_name = probe_data.get("service_name", "")
+
+                # 增强：如果直接探测 playlist 没获取到 service_name，
+                # 尝试跟踪 HLS 流到实际 TS 分片提取 service_name
+                if not svc_name and CHANNEL_NAME_VERIFY_ENABLED:
+                    parsed_path = urlparse(item["url"]).path.lower()
+                    fmt_name = (probe_data.get("format_name", "") or "").lower()
+                    if ".m3u8" in parsed_path or "mpegurl" in fmt_name or "hls" in fmt_name:
+                        svc_name = extract_service_name_from_hls(item["url"])
+
+                item["service_name"] = svc_name
+
+                if CHANNEL_NAME_VERIFY_ENABLED:
+                    mismatch_reason = None
+
+                    # 方式1：流内 service_name 与频道名对比
+                    if svc_name and is_channel_mismatch(ch, svc_name):
+                        mismatch_reason = f"channel_mismatch:expected={ch},actual={svc_name}"
+
+                    # 方式2：URL 路径线索交叉校验
+                    # 如果 URL 路径中明确写了 cctv16，但频道名是 CCTV-17 → 不匹配
+                    if not mismatch_reason and is_url_channel_mismatch(ch, item["url"]):
+                        url_hint = extract_channel_hint_from_url(item["url"])
+                        mismatch_reason = f"url_mismatch:expected={ch},url_hint={url_hint}"
+
+                    if mismatch_reason:
+                        item["ok"] = False
+                        item["reason"] = mismatch_reason
+                        item["score"] = 0.0
+                        channel_mismatch_count += 1
+                        print(f"  >> 【频道不匹配】{mismatch_reason}，淘汰")
+                        continue
+
                 # 分辨率过滤：ffprobe 确认低于 MIN_HEIGHT → 淘汰
                 if MIN_HEIGHT > 0 and probe_data["height"] > 0 and probe_data["height"] < MIN_HEIGHT:
                     item["ok"] = False
@@ -1130,7 +1479,7 @@ def probe_top_candidates(
                     2,
                 )
 
-    print(f"【ffprobe】精测完成：成功 {probe_success}/{total_probe}")
+    print(f"【ffprobe】精测完成：成功 {probe_success}/{total_probe}，频道不匹配淘汰 {channel_mismatch_count}")
 
 
 # ====================== 持续稳定性测试（可选阶段二.5） ======================
@@ -1319,6 +1668,31 @@ def update_history(history: dict, results: List[dict]) -> None:
 
 
 # ====================== 候选选择 ======================
+def _speed_sort_key(r: dict) -> tuple:
+    """
+    综合速度排序键（降序排列，值越小越靠前，所以取负）：
+    1. 实际播放速率比（playback_speed_ratio）— 最准确，反映能否实时播放
+       speed=2.0x 表示2倍实时（充裕），speed=1.0x 表示刚好实时，speed=0.5x 表示会卡顿
+    2. HTTP 下载速度（speed_kbps）— 播放验证数据不可用时回退使用
+    3. 综合评分（score）— 最终 tiebreaker
+
+    排序逻辑：
+    - 有播放验证数据的链接，用实际播放速率比排序（最准确）
+    - 无播放验证数据的链接，用 HTTP 速度估算但打 0.5 折
+      （因为 HTTP 突发速度不能代表持续播放能力，需降级处理）
+    """
+    pb_ratio = r.get("playback_speed_ratio", 0)
+    http_speed = r.get("speed_kbps", 0)
+    if pb_ratio > 0:
+        # 有实际播放验证数据 → 直接用播放速率比
+        primary = pb_ratio
+    else:
+        # 无播放验证数据 → 用 HTTP 速度估算，打 0.5 折
+        # 例：8000kbps → 估算 4.0x → 折后 2.0x（仍高于 1.0x 实时，但低于验证过的 2.5x）
+        primary = (http_speed / 2000.0) * 0.5
+    return (-primary, -http_speed, -r["score"])
+
+
 def select_best_links(results: List[dict], keep_count: int) -> List[dict]:
     # 720P 过滤兜底：已知分辨率且低于阈值的直接排除
     valid = [r for r in results if r["ok"]]
@@ -1327,36 +1701,36 @@ def select_best_links(results: List[dict], keep_count: int) -> List[dict]:
             r for r in valid
             if not (r.get("height", 0) > 0 and r.get("height", 0) < MIN_HEIGHT)
         ]
-    # 综合分降序 → 速度降序 → 延迟升序 → 清晰度降序
-    valid.sort(
-        key=lambda r: (
-            -r["score"],
-            -r.get("speed_kbps", 0),
-            r.get("latency", 999),
-            -r.get("height", 0),
-        )
-    )
+
+    # 按实际播放速度排序（最快的排第一）
+    valid.sort(key=_speed_sort_key)
+
     if len(valid) <= keep_count:
         return valid
 
-    # 优先不同 host（CDN 多样性）
-    selected = []
-    used_hosts = set()
-    for item in valid:
-        h = host_of(item["url"])
-        if h not in used_hosts:
-            selected.append(item)
-            used_hosts.add(h)
-        if len(selected) >= keep_count:
-            return selected
-
-    # 不够再从剩余里补
-    for item in valid:
-        if item not in selected:
-            selected.append(item)
-        if len(selected) >= keep_count:
-            break
-    return selected
+    if CDN_DIVERSITY_ENABLED:
+        # CDN 多样性模式：优先不同 host，提高容灾能力
+        selected = []
+        used_hosts = set()
+        for item in valid:
+            h = host_of(item["url"])
+            if h not in used_hosts:
+                selected.append(item)
+                used_hosts.add(h)
+            if len(selected) >= keep_count:
+                break
+        # 不够再从剩余里补
+        for item in valid:
+            if item not in selected:
+                selected.append(item)
+            if len(selected) >= keep_count:
+                break
+        # 最终输出仍按速度从快到慢排列
+        selected.sort(key=_speed_sort_key)
+        return selected
+    else:
+        # 默认模式：纯粹按速度排序，取最快的 N 条
+        return valid[:keep_count]
 
 
 # ====================== 源聚合 ======================
@@ -1644,6 +2018,9 @@ def main() -> int:
     no_video_dropped = sum(1 for r in all_results if "no_video" in r.get("reason", ""))
     playback_fail_dropped = sum(1 for r in all_results if "playback" in r.get("reason", ""))
     ad_heavy_count = sum(1 for r in all_results if r.get("is_ad_heavy", False))
+    channel_mismatch_dropped = sum(1 for r in all_results if "mismatch" in r.get("reason", ""))
+    slow_dropped = sum(1 for r in all_results if "too_slow" in r.get("reason", ""))
+    few_frames_dropped = sum(1 for r in all_results if "too_few_frames" in r.get("reason", ""))
 
     # ffprobe 后重新统计 ok 数
     final_ok_count = sum(1 for r in all_results if r["ok"])
@@ -1663,6 +2040,9 @@ def main() -> int:
         "black_screen_dropped": black_screen_dropped,
         "no_video_dropped": no_video_dropped,
         "playback_fail_dropped": playback_fail_dropped,
+        "channel_mismatch_dropped": channel_mismatch_dropped,
+        "slow_dropped": slow_dropped,
+        "few_frames_dropped": few_frames_dropped,
         "ad_heavy_count": ad_heavy_count,
         "ffprobe_tested_count": ffprobe_count,
         "m3u8_meta_quality_count": m3u8_meta_count,
@@ -1692,6 +2072,8 @@ def main() -> int:
             "playback_black_threshold": PLAYBACK_BLACK_THRESHOLD,
             "playback_timeout": PLAYBACK_TIMEOUT,
             "m3u8_ad_discontinuity_threshold": M3U8_AD_DISCONTINUITY_THRESHOLD,
+            "cdn_diversity_enabled": CDN_DIVERSITY_ENABLED,
+            "channel_name_verify_enabled": CHANNEL_NAME_VERIFY_ENABLED,
             "weights": {
                 "availability": W_AVAILABILITY,
                 "quality": W_QUALITY,
@@ -1711,10 +2093,16 @@ def main() -> int:
     print(f"有效链接：{final_ok_count}/{len(unique_urls)}")
     if low_res_dropped > 0:
         print(f"低分辨率淘汰：{low_res_dropped} 条（<{MIN_HEIGHT}P）")
+    if channel_mismatch_dropped > 0:
+        print(f"频道不匹配淘汰：{channel_mismatch_dropped} 条（CCTV16播CCTV17等）")
     if black_screen_dropped > 0:
         print(f"黑屏淘汰：{black_screen_dropped} 条")
     if no_video_dropped > 0:
         print(f"无视频流淘汰：{no_video_dropped} 条")
+    if few_frames_dropped > 0:
+        print(f"帧数不足淘汰：{few_frames_dropped} 条")
+    if slow_dropped > 0:
+        print(f"速度过慢淘汰：{slow_dropped} 条（实时播放速率<0.5x）")
     if playback_fail_dropped > 0:
         print(f"播放验证失败淘汰：{playback_fail_dropped} 条")
     if ad_heavy_count > 0:
