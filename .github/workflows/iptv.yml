@@ -68,7 +68,7 @@ jobs:
           # 阶段一 HTTP 测速参数
           STREAM_TEST_WORKERS: "10"
           PRETEST_MAX_PER_CHANNEL: "80"
-          MAX_TOTAL_TEST_URLS: "3000"
+          MAX_TOTAL_TEST_URLS: "4000"
           CONNECT_TIMEOUT: "3"
           READ_TIMEOUT: "6"
           TEST_STAGE_MAX_SECONDS: "1800"
