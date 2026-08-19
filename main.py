@@ -70,7 +70,7 @@ M3U8_SEGMENT_TEST_COUNT = int(os.getenv("M3U8_SEGMENT_TEST_COUNT", "1"))
 # ====================== 质量检测参数 ======================
 # ffprobe 精测：对每频道 HTTP 测速前 N 名做 ffprobe，获取真实分辨率/码率/编码
 FFPROBE_ENABLED = os.getenv("FFPROBE_ENABLED", "1") not in ("0", "false", "no", "")
-FFPROBE_PATH = shutil.which("ffprobe") or ""
+FFPROBE_PATH = os.getenv("FFPROBE_PATH") or shutil.which("ffprobe") or ""
 FFPROBE_TOP_N = int(os.getenv("FFPROBE_TOP_N", "5"))
 FFPROBE_TIMEOUT = int(os.getenv("FFPROBE_TIMEOUT", "8"))
 
@@ -81,7 +81,7 @@ SUSTAINED_TEST_TOP_N = int(os.getenv("SUSTAINED_TEST_TOP_N", "3"))
 # ====================== 阶段三：实际播放验证（黑屏/广告检测） ======================
 # 用 ffmpeg 实际解码视频，检测黑屏、无画面、纯广告流
 PLAYBACK_VALIDATION_ENABLED = os.getenv("PLAYBACK_VALIDATION_ENABLED", "1") not in ("0", "false", "no", "")
-FFMPEG_PATH = shutil.which("ffmpeg") or ""
+FFMPEG_PATH = os.getenv("FFMPEG_PATH") or shutil.which("ffmpeg") or ""
 # 每频道验证前 N 名候选（在 ffprobe 精测之后、输出之前执行）
 PLAYBACK_VALIDATE_TOP_N = int(os.getenv("PLAYBACK_VALIDATE_TOP_N", "5"))
 # 实际解码时长（秒），解码这几秒来检测黑屏
