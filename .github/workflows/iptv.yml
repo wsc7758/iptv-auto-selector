@@ -3,8 +3,8 @@ name: IPTV 优选
 on:
   workflow_dispatch:
   schedule:
-    # 每天 UTC 18:00 = 北京时间 2:00
-    - cron: "0 18 * * *"
+    # 每天 UTC 13:00 = 北京时间 21:00
+    - cron: "0 13 * * *"
 
 permissions:
   contents: write
@@ -76,27 +76,35 @@ jobs:
           DIRECT_READ_BYTES: "524288"
           SEGMENT_READ_BYTES: "262144"
           MIN_VALID_BYTES: "16384"
-          M3U8_SEGMENT_TEST_COUNT: "1"
+          # 多分片测速：测试 2 个分片取平均，比单分片更准确
+          M3U8_SEGMENT_TEST_COUNT: "2"
           # 阶段二 ffprobe 精测参数
           FFPROBE_ENABLED: "1"
-          FFPROBE_TOP_N: "5"
+          # 增加到 8：更多候选获得精测数据，为后续筛选留余量
+          FFPROBE_TOP_N: "8"
           FFPROBE_TIMEOUT: "8"
           # 阶段二.5 持续稳定性测试（0=关闭）
           SUSTAINED_TEST_SECONDS: "0"
-          # 阶段三：实际播放验证（黑屏/广告检测）
+          # 阶段三：实际播放验证（黑屏/冻结帧/静音/播放速率检测）
           PLAYBACK_VALIDATION_ENABLED: "1"
-          PLAYBACK_VALIDATE_TOP_N: "5"
-          PLAYBACK_TEST_SECONDS: "5"
+          # 增加到 8：与 ffprobe 对齐，更多候选经过播放验证
+          PLAYBACK_VALIDATE_TOP_N: "8"
+          # 解码 8 秒：更长的时间让 ffmpeg 输出更稳定的 speed= 值
+          PLAYBACK_TEST_SECONDS: "8"
           PLAYBACK_BLACK_THRESHOLD: "3"
-          PLAYBACK_TIMEOUT: "15"
+          PLAYBACK_TIMEOUT: "20"
           M3U8_AD_DISCONTINUITY_THRESHOLD: "3"
+          # 频道名校验：通过 service_name + URL 路径交叉校验
+          CHANNEL_NAME_VERIFY_ENABLED: "1"
           # 分辨率过滤：丢弃 720P 以下
           MIN_HEIGHT: "720"
-          # 评分权重（速度优先）
-          W_AVAILABILITY: "0.25"
-          W_QUALITY: "0.20"
-          W_SPEED: "0.35"
-          W_LATENCY: "0.10"
+          # CDN 多样性：0=关闭（纯粹按速度排序），1=开启（优先不同CDN提高容灾）
+          CDN_DIVERSITY_ENABLED: "0"
+          # 评分权重（速度优先：速度权重最高）
+          W_AVAILABILITY: "0.20"
+          W_QUALITY: "0.15"
+          W_SPEED: "0.40"
+          W_LATENCY: "0.15"
           W_STABILITY: "0.10"
           # 输出
           KEEP_PER_CHANNEL: "5"
