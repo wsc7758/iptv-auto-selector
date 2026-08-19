@@ -53,6 +53,13 @@ jobs:
           FFPROBE_TIMEOUT: "8"
           # 阶段二.5 持续稳定性测试（0=关闭）
           SUSTAINED_TEST_SECONDS: "0"
+          # 阶段三：实际播放验证（黑屏/广告检测）
+          PLAYBACK_VALIDATION_ENABLED: "1"
+          PLAYBACK_VALIDATE_TOP_N: "5"
+          PLAYBACK_TEST_SECONDS: "5"
+          PLAYBACK_BLACK_THRESHOLD: "3"
+          PLAYBACK_TIMEOUT: "15"
+          M3U8_AD_DISCONTINUITY_THRESHOLD: "3"
           # 分辨率过滤：丢弃 720P 以下
           MIN_HEIGHT: "720"
           # 评分权重（速度优先）
