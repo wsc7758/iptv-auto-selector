@@ -12,7 +12,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 55
+    timeout-minutes: 120
 
     steps:
       - uses: actions/checkout@v4
@@ -89,15 +89,15 @@ jobs:
           PLAYBACK_VALIDATION_ENABLED: "1"
           # 增加到 8：与 ffprobe 对齐，更多候选经过播放验证
           PLAYBACK_VALIDATE_TOP_N: "8"
-          # 解码 8 秒：更长的时间让 ffmpeg 输出更稳定的 speed= 值
-          PLAYBACK_TEST_SECONDS: "8"
+          # 解码 5 秒：更长的时间让 ffmpeg 输出更稳定的 speed= 值
+          PLAYBACK_TEST_SECONDS: "5"
           PLAYBACK_BLACK_THRESHOLD: "3"
           PLAYBACK_TIMEOUT: "20"
           M3U8_AD_DISCONTINUITY_THRESHOLD: "3"
           # 频道名校验：通过 service_name + URL 路径交叉校验
           CHANNEL_NAME_VERIFY_ENABLED: "1"
-          # 分辨率过滤：丢弃 720P 以下
-          MIN_HEIGHT: "720"
+          # 分辨率过滤：丢弃 1080P 以下
+          MIN_HEIGHT: "1080"
           # CDN 多样性：0=关闭（纯粹按速度排序），1=开启（优先不同CDN提高容灾）
           CDN_DIVERSITY_ENABLED: "0"
           # 评分权重（速度优先：速度权重最高）
