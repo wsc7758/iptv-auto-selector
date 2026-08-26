@@ -49,7 +49,7 @@ REPORT_JSON = OUTPUT_DIR / "report.json"
 
 # ====================== 通用参数 ======================
 SOURCE_DOWNLOAD_WORKERS = int(os.getenv("SOURCE_DOWNLOAD_WORKERS", "6"))
-STREAM_TEST_WORKERS = int(os.getenv("STREAM_TEST_WORKERS", "10"))
+STREAM_TEST_WORKERS = int(os.getenv("STREAM_TEST_WORKERS", "15"))
 KEEP_PER_CHANNEL = int(os.getenv("KEEP_PER_CHANNEL", "5"))
 PRETEST_MAX_PER_CHANNEL = int(os.getenv("PRETEST_MAX_PER_CHANNEL", "80"))
 MAX_TOTAL_TEST_URLS = int(os.getenv("MAX_TOTAL_TEST_URLS", "3000"))
