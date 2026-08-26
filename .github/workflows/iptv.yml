@@ -1,22 +1,17 @@
 name: IPTV 优选
-
 on:
   workflow_dispatch:
   schedule:
     # 每天 UTC 13:00 = 北京时间 21:00
     - cron: "0 13 * * *"
-
 permissions:
   contents: write
-
 jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 120
-
     steps:
       - uses: actions/checkout@v4
-
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -24,10 +19,8 @@ jobs:
           # 启用 pip 缓存，加速依赖安装
           cache: "pip"
           cache-dependency-path: "requirements.txt"
-
       - name: Install Python dependencies
         run: pip install -r requirements.txt
-
       - name: Install ffmpeg static binary
         run: |
           # 从 BtbN/FFmpeg-Builds 下载静态编译的 ffmpeg（含 ffprobe）
@@ -35,7 +28,6 @@ jobs:
           set -e
           FFMPEG_DIR="$HOME/ffmpeg-static"
           mkdir -p "$FFMPEG_DIR"
-
           # 检查是否已有缓存（同一 runner 复用时命中）
           if [ -x "$FFMPEG_DIR/ffmpeg" ] && [ -x "$FFMPEG_DIR/ffprobe" ]; then
             echo "ffmpeg 已缓存，跳过下载"
@@ -49,15 +41,12 @@ jobs:
             chmod +x "$FFMPEG_DIR/ffmpeg" "$FFMPEG_DIR/ffprobe"
             rm -rf /tmp/ffmpeg.tar.xz /tmp/ffmpeg-master-latest-linux64-gpl
           fi
-
           # 验证
           "$FFMPEG_DIR/ffmpeg" -version | head -1
           "$FFMPEG_DIR/ffprobe" -version | head -1
-
           # 写入 GITHUB_ENV 供后续步骤使用
           echo "FFMPEG_PATH=$FFMPEG_DIR/ffmpeg" >> "$GITHUB_ENV"
           echo "FFPROBE_PATH=$FFMPEG_DIR/ffprobe" >> "$GITHUB_ENV"
-
       - name: Run IPTV selector
         env:
           # 关键：禁用 Python 输出缓冲，确保 GitHub Actions 实时显示日志
@@ -109,7 +98,6 @@ jobs:
           # 输出
           KEEP_PER_CHANNEL: "5"
         run: python main.py
-
       - name: Commit outputs
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
